@@ -29,5 +29,33 @@ export const StyledSign = styled.main<{ isregister: boolean }>`
     background: ${({ theme }) =>
       `linear-gradient(${theme.colors.primary}, ${theme.colors.quaternary})`};
     ${({ isregister }) => isregister && `right: 0;`};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+
+    p, h1 {
+      font-size: 1.5rem;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .overcard-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    svg {
+      height: 100px;
+      width: 300px;
+    }
   }
 `;
