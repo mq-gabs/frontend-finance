@@ -4,9 +4,9 @@ export default {
     secondary: "#A87BC7",
     tertiary: "#E0B0FF",
     quaternary: "#F1D7FF",
-    primaryText: "#222",
-    secondaryText: "#efefef",
-    tertiaryText: "#888",
-    bg: "#000",
+    primaryText: "#efefef",
+    quaternaryText: "#afafaf",
+    bg: "#fff",
+    cbg: '#000',
   },
 };

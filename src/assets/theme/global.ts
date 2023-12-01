@@ -6,11 +6,11 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'DM sans', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     user-select: none;
 
     @media (max-width: 600px) {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 

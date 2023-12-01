@@ -7,16 +7,22 @@ export const StyledInput = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   gap: 1rem;
-  border: 3px solid ${({ theme }) => theme.colors.bg};
+  border: 3px solid ${({ theme }) => theme.colors.tertiary};
   height: 3rem;
-
+  transition: 300ms;
+  
   > input {
     border: none;
     outline: none;
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   > input::placeholder {
-    color: ${({ theme }) => theme.colors.tertiaryText};
+    color: ${({ theme }) => theme.colors.tertiary};
+  }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.secondary};
   }
 
   &:has(input:focus) {

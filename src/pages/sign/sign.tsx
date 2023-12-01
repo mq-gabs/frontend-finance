@@ -73,7 +73,7 @@ export const Sign = () => {
             setValue={setEmail}
           />
           <Input
-            type="text"
+            type="password"
             value={password}
             placeholder="Senha"
             setValue={setPassword}

@@ -20,24 +20,32 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
     if (styledType === "primary") {
       return `
         background: ${theme.colors.primary};
-        color: ${theme.colors.secondaryText};
+        color: ${theme.colors.primaryText};
         border: 3px solid ${theme.colors.primary};
 
         &:hover {
           background: ${theme.colors.secondary};
+        }
+
+        &:focus {
+          border-color: ${theme.colors.tertiary};
         }
       `;
     }
 
     if (styledType === "secondary") {
       return `
-        background: ${theme.colors.secondaryText};
+        background: ${theme.colors.primaryText};
         color: ${theme.colors.primary};
         border: 3px solid ${theme.colors.primary};
 
         &:hover {
           background: ${theme.colors.secondary};
-          color: ${theme.colors.secondaryText};
+          color: ${theme.colors.primaryText};
+        }
+
+        &:focus {
+          border-color: ${theme.colors.tertiary};
         }
       `;
     }
