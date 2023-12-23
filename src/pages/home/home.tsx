@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Table } from "../../components";
+import { getAllPayments } from "../../services";
 import { StyledHome } from "./home.styles";
 
 export const Home = () => {
@@ -9,6 +11,16 @@ export const Home = () => {
     [2, "Lucimara", "Souza"],
     [3, "Maria", "da Conceição Marques de Souza"],
   ];
+
+  const getPayments = async () => {
+    const payments = await getAllPayments({});
+
+    console.log({ payments });
+  };
+
+  useEffect(() => {
+    getPayments();
+  }, []);
 
   return (
     <StyledHome>

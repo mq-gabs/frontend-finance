@@ -10,7 +10,6 @@ export const StyledMenu = styled.aside`
   background: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
-  ${transition}
 
   ul {
     display: grid;
@@ -22,6 +21,7 @@ export const StyledMenu = styled.aside`
   }
 
   ul li a {
+    ${transition}
     font-size: 0.8rem;
     text-transform: uppercase;
     padding: 0.5rem;

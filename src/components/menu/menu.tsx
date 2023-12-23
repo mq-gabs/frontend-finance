@@ -3,7 +3,6 @@ import { StyledMenu } from "./menu.styles";
 import { MdHome } from "react-icons/md";
 import { FaCirclePlus } from "react-icons/fa6";
 import { BiSolidCategoryAlt } from "react-icons/bi";
-import { FaSignInAlt } from "react-icons/fa";
 
 export const Menu = () => {
   return (
@@ -22,11 +21,6 @@ export const Menu = () => {
         <li>
           <Link to="/categories">
             <BiSolidCategoryAlt /> Categorias
-          </Link>
-        </li>
-        <li>
-          <Link to="/sign">
-            <FaSignInAlt /> Logar
           </Link>
         </li>
       </ul>

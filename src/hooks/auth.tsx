@@ -18,10 +18,16 @@ type TAuthContext = {
   saveUserData: Function;
 };
 
+export const localAuthTag = "@finance:auth";
+
 const AuthContext = createContext<TAuthContext>({} as TAuthContext);
 
 const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [userData, setUserData] = useState<TUser>({} as TUser);
+  const storaged = localStorage.getItem(localAuthTag);
+
+  const defaultData = JSON.parse(storaged || "{}");
+
+  const [userData, setUserData] = useState<TUser>(defaultData);
 
   const saveUserData = ({ id, name, email, profile, token }: TUser) => {
     setUserData({
@@ -31,6 +37,17 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       profile,
       token,
     });
+
+    localStorage.setItem(
+      localAuthTag,
+      JSON.stringify({
+        id,
+        name,
+        email,
+        profile,
+        token,
+      })
+    );
   };
 
   return (

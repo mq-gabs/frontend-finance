@@ -3,6 +3,7 @@ import { StyledSign } from "./sign.styles";
 import { Input, Button } from "../../components";
 import { signIn } from "../../services";
 import { useAuth } from "../../hooks";
+import Icon from "../../components/icons/icon";
 
 export const Sign = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -47,6 +48,7 @@ export const Sign = () => {
     <StyledSign isregister={isRegister}>
       <div className="sign up">
         <form>
+          <Icon name="logo" />
           <Input
             type="text"
             value={name}

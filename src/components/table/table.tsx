@@ -11,13 +11,13 @@ export const Table: FC<ITable> = ({ columnsNames = [], data = [[], []] }) => {
     <StyledTable size={columnsNames.length}>
       <tr>
         {columnsNames.map((name) => (
-          <th>{name}</th>
+          <th key={name}>{name}</th>
         ))}
       </tr>
       {data.map((row) => (
-        <tr>
+        <tr key={String(Math.random() * 1e6)}>
           {row.map((cell) => (
-            <td>{cell}</td>
+            <td key={cell}>{cell}</td>
           ))}
         </tr>
       ))}

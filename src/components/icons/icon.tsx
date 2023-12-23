@@ -1,12 +1,9 @@
-// @ts-expect-error
-import logo from "../../assets/img/logo.svg";
-// @ts-expect-error
-import logoName from "../../assets/img/logo-name.svg";
 import { StyledIcon } from "./icon.styles";
+import { Logo, LogoName } from ".";
 
 const icons = {
-  logo,
-  logoName,
+  logo: Logo,
+  logoName: LogoName,
 };
 
 interface IIcon {
@@ -14,5 +11,10 @@ interface IIcon {
 }
 
 export default function Icon({ name = "logo" }: IIcon) {
-  return <StyledIcon>{icons[name]}</StyledIcon>;
+  const RIcon = icons[name];
+  return (
+    <StyledIcon>
+      <RIcon />
+    </StyledIcon>
+  );
 }
