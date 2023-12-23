@@ -13,6 +13,7 @@ export const Router = () => {
           left: "120px",
           height: "100vh",
           top: "0",
+          overflowY: "auto",
         }}
       >
         <Routes>

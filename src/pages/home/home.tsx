@@ -13,6 +13,7 @@ export const Home = () => {
   return (
     <StyledHome>
       <Table columnsNames={columnsNames} data={data} />
+      <Table columnsNames={columnsNames} data={data} />
     </StyledHome>
   );
 };

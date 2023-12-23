@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledTable = styled.table<{ size: number }>`
   border: 1px solid black;
-  margin: 1rem;
 
   tr {
     display: grid;

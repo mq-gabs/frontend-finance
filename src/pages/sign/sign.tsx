@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { StyledSign } from "./sign.styles";
 import { Input, Button } from "../../components";
+import { signIn } from "../../services";
+import { useAuth } from "../../hooks";
 
 export const Sign = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -8,19 +10,33 @@ export const Sign = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [samePassword, setSamePassword] = useState<string>("");
+  const { saveUserData } = useAuth();
 
   const goToCreateAccount = (e: any) => {
     e.preventDefault();
     setIsRegister(true);
+    setEmail("");
+    setPassword("");
   };
 
   const goToLogIn = (e: any) => {
     e.preventDefault();
     setIsRegister(false);
+    setEmail("");
+    setPassword("");
+    setName("");
+    setSamePassword("");
   };
 
-  const logIn = (e: any) => {
+  const logIn = async (e: any) => {
     e.preventDefault();
+
+    const response = await signIn({
+      email,
+      password,
+    });
+
+    saveUserData(response);
   };
 
   const createAccount = (e: any) => {
