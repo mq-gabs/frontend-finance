@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyledSign } from "./sign.styles";
-import { Input, Button, LogoName, Logo } from "../../components";
+import { Input, Button } from "../../components";
 
 export const Sign = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -85,22 +85,6 @@ export const Sign = () => {
             text="Não tenho uma conta"
           />
         </form>
-      </div>
-
-      <div className="overcard">
-        <div className="overcard-content">
-          <LogoName /> 
-          <Logo />
-        </div>
-        <h1>
-          Quer otimizar sua vida financeira e maximizar seu poder de compra sem ganhar mais dinheiro?
-        </h1>
-        <p>
-          Gerencie suas gastos e economias de forma organizada.
-        </p>
-        <p>
-          Acompanhe suas compras e mensure de forma correta suas metas.
-        </p>
       </div>
     </StyledSign>
   );

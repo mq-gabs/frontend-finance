@@ -1,12 +1,9 @@
 export default {
   colors: {
-    primary: "#734A91",
-    secondary: "#A87BC7",
-    tertiary: "#E0B0FF",
-    quaternary: "#F1D7FF",
-    primaryText: "#efefef",
-    quaternaryText: "#afafaf",
-    bg: "#fff",
-    cbg: '#000',
+    primary: "#A87BC7",
+    secondary: "#F1D7FF",
+    light: "#f5f5f5",
+    grey: "#b7b7b7",
+    dark: "#333333",
   },
 };

@@ -13,3 +13,5 @@ animation-duration: 500ms;
   }
 }
 `;
+
+export const transition = `transition: 300ms;`;

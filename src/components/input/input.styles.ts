@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { showUp } from "../../assets/theme/animations";
+import { showUp, transition } from "../../assets/theme/animations";
 
 export const StyledInput = styled.div`
   padding: 0rem 1rem;
@@ -7,26 +7,19 @@ export const StyledInput = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   gap: 1rem;
-  border: 3px solid ${({ theme }) => theme.colors.tertiary};
+  border: 3px solid ${({ theme }) => theme.colors.grey};
   height: 3rem;
-  transition: 300ms;
-  
+  ${transition}
+
   > input {
     border: none;
     outline: none;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.dark};
+    background: ${({ theme }) => theme.colors.light};
   }
 
   > input::placeholder {
-    color: ${({ theme }) => theme.colors.tertiary};
-  }
-
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
-  }
-
-  &:has(input:focus) {
-    border-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.grey};
   }
 
   ${showUp}

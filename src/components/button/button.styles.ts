@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TButtonTypes } from ".";
-import { showUp } from "../../assets/theme/animations";
+import { showUp, transition } from "../../assets/theme/animations";
 
 export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
   border-radius: 5rem;
@@ -9,44 +9,38 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
   grid-template-rows: 1fr;
   text-transform: uppercase;
   font-weight: bold;
-  box-shadow: 0px 0px 0px ${({ theme }) => theme.colors.bg};
   cursor: pointer;
   outline: none;
   height: 3rem;
   align-items: center;
-  transition: 300ms;
+  ${transition}
 
   ${({ styledtype: styledType, theme }) => {
     if (styledType === "primary") {
       return `
         background: ${theme.colors.primary};
-        color: ${theme.colors.primaryText};
+        color: ${theme.colors.light};
         border: 3px solid ${theme.colors.primary};
 
         &:hover {
-          background: ${theme.colors.secondary};
+          background: ${theme.colors.light};
+          color: ${theme.colors.primary}
         }
 
-        &:focus {
-          border-color: ${theme.colors.tertiary};
-        }
       `;
     }
 
     if (styledType === "secondary") {
       return `
-        background: ${theme.colors.primaryText};
+        background: ${theme.colors.light};
         color: ${theme.colors.primary};
-        border: 3px solid ${theme.colors.primary};
+        border: 3px solid ${theme.colors.light};
 
         &:hover {
-          background: ${theme.colors.secondary};
-          color: ${theme.colors.primaryText};
+          border-color: ${theme.colors.primary};
         }
 
-        &:focus {
-          border-color: ${theme.colors.tertiary};
-        }
+     
       `;
     }
   }}
