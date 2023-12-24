@@ -1,31 +1,41 @@
-import { useEffect } from "react";
-import { Table } from "../../components";
+import { useEffect, useState } from "react";
 import { getAllPayments } from "../../services";
 import { StyledHome } from "./home.styles";
+import { List } from "./list/list";
+import { TPayments } from "../../utils";
 
 export const Home = () => {
-  const columnsNames = ["Id", "Nome", "Sobrenome"];
-
-  const data = [
-    [1, "Gabriel", "Marques"],
-    [2, "Lucimara", "Souza"],
-    [3, "Maria", "da Conceição Marques de Souza"],
-  ];
+  const [pays, setPays] = useState<TPayments[]>([]);
+  const [paysTotal, setPaysTotal] = useState<number>(0);
+  const [page, setPage] = useState<number>(0);
+  const [pageSize, setPageSize] = useState<number>(10);
 
   const getPayments = async () => {
-    const payments = await getAllPayments({});
+    const payments = await getAllPayments({ page, pageSize });
 
-    console.log({ payments });
+    setPays(payments[0]);
+    setPaysTotal(payments[1]);
   };
 
   useEffect(() => {
     getPayments();
-  }, []);
+  }, [page, pageSize]);
 
   return (
     <StyledHome>
-      <Table columnsNames={columnsNames} data={data} />
-      <Table columnsNames={columnsNames} data={data} />
+      <section className="filters"></section>
+      <section className="list">
+        <List
+          pays={pays}
+          paysCount={paysTotal}
+          page={page}
+          setPage={setPage}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+        />
+      </section>
+      <section className="total"></section>
+      <section className="other"></section>
     </StyledHome>
   );
 };
