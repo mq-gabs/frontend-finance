@@ -16,6 +16,7 @@ type TUser = {
 type TAuthContext = {
   user: TUser;
   saveUserData: Function;
+  logOut: () => void;
 };
 
 export const localAuthTag = "@finance:auth";
@@ -50,8 +51,13 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     );
   };
 
+  const logOut = () => {
+    localStorage.setItem(localAuthTag, "{}");
+    setUserData({} as TUser);
+  };
+
   return (
-    <AuthContext.Provider value={{ user: userData, saveUserData }}>
+    <AuthContext.Provider value={{ user: userData, saveUserData, logOut }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSign = styled.main<{ isregister: boolean }>`
+export const StyledSign = styled.main<{ isregister: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@ export const StyledSign = styled.main<{ isregister: boolean }>`
   }
 
   ${({ isregister }) =>
-    isregister
+    isregister === "true"
       ? `
     .up {
       display: block;

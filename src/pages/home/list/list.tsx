@@ -28,7 +28,7 @@ export const List = ({
   const [data, setData] = useState<any[][]>([[]]);
 
   const columnsNames = [
-    "Pagamento",
+    "Pagar em",
     "Título",
     "Categoria",
     "Fluxo",
@@ -54,7 +54,7 @@ export const List = ({
 
   return (
     <StyledList>
-      <h2>Pagamentos realizados</h2>
+      <h2>Pagamentos</h2>
       <Table
         columnsNames={columnsNames}
         data={data}

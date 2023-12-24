@@ -4,7 +4,7 @@ export const call = async (func: Function) => {
 
     return data;
   } catch ({ response }: any) {
-    console.log({ response });
+    console.error({ response });
     return;
   }
 };
