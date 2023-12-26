@@ -14,3 +14,4 @@ export const api = axios.create({
 
 export * from "./auth";
 export * from "./payments";
+export * from "./categories";

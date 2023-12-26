@@ -3,15 +3,12 @@ import { boxShadow, showUp } from "../../assets/theme/animations";
 
 export const StyledHome = styled.main`
   background: ${({ theme }) => theme.colors.light};
-  min-height: 100vh;
-  padding: 1rem;
+  height: 100vh;
 
   display: grid;
   grid-template-areas:
     "filters  filters"
     "list  total"
-    "list  other"
-    "list  other"
     "list  other";
   gap: 1rem;
 

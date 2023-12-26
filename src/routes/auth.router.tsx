@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages";
+import { Categories, Home, NewPayments } from "../pages";
 import { Menu } from "../components";
 
 export const AuthRouter = () => {
@@ -14,12 +14,13 @@ export const AuthRouter = () => {
           height: "100vh",
           top: "0",
           overflowY: "auto",
+          padding: "1rem",
         }}
       >
         <Routes>
           <Route path="/" Component={Home} />
-          <Route path="/categories" Component={() => <></>} />
-          <Route path="/payments/new" Component={() => <></>} />
+          <Route path="/categories" Component={Categories} />
+          <Route path="/payments/new" Component={NewPayments} />
           <Route path="*" Component={Home} />
         </Routes>
       </div>

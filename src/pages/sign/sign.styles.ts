@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { showUp } from "../../assets/theme/animations";
 
 export const StyledSign = styled.main<{ isregister: string }>`
   display: flex;
@@ -12,6 +13,7 @@ export const StyledSign = styled.main<{ isregister: string }>`
     padding: 1rem;
     width: 100%;
     margin: 0 auto;
+    ${showUp}
   }
 
   .sign form {

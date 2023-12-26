@@ -29,7 +29,7 @@ export const Menu = () => {
         </li>
         <li>
           <div onClick={logOut}>
-            <a href="/s">
+            <a href="/">
               <FaSignOutAlt /> Sair
             </a>
           </div>

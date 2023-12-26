@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { showUp, transition } from "../../assets/theme/animations";
+import { transition } from "../../assets/theme/animations";
 
 export const StyledInput = styled.div`
   padding: 0rem 1rem;
@@ -8,6 +8,7 @@ export const StyledInput = styled.div`
   grid-template-rows: 1fr;
   gap: 1rem;
   border: 3px solid ${({ theme }) => theme.colors.grey};
+  background: ${({ theme }) => theme.colors.light};
   height: 3rem;
   ${transition}
 
@@ -21,6 +22,4 @@ export const StyledInput = styled.div`
   > input::placeholder {
     color: ${({ theme }) => theme.colors.grey};
   }
-
-  ${showUp}
 `;

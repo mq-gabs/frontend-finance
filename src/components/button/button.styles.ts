@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TButtonTypes } from ".";
-import { showUp, transition } from "../../assets/theme/animations";
+import { transition } from "../../assets/theme/animations";
 
 export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
   border-radius: 5rem;
@@ -44,6 +44,4 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
       `;
     }
   }}
-
-  ${showUp}
 `;
