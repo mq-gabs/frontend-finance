@@ -2,8 +2,8 @@ import { api } from "..";
 import { call } from "../utils";
 
 type TGetAllCategories = {
-  page: number;
-  pageSize: number;
+  page?: number;
+  pageSize?: number;
   name?: string;
   startDate?: string;
   endDate?: string;

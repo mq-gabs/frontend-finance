@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TButtonTypes } from ".";
-import { transition } from "../../assets/theme/animations";
+import { bright, transition } from "../../assets/theme/animations";
 
 export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
   border-radius: 5rem;
@@ -23,10 +23,8 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
         border: 3px solid ${theme.colors.primary};
 
         &:hover {
-          background: ${theme.colors.light};
-          color: ${theme.colors.primary}
+          ${bright}
         }
-
       `;
     }
 
@@ -37,10 +35,8 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
         border: 3px solid ${theme.colors.light};
 
         &:hover {
-          border-color: ${theme.colors.primary};
+          ${bright}
         }
-
-     
       `;
     }
   }}

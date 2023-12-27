@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { transition } from "../../assets/theme/animations";
+import { bright, transition } from "../../assets/theme/animations";
 
 export const StyledInput = styled.div`
   padding: 0rem 1rem;
@@ -11,6 +11,9 @@ export const StyledInput = styled.div`
   background: ${({ theme }) => theme.colors.light};
   height: 3rem;
   ${transition}
+  &:hover {
+    ${bright}
+  }
 
   > input {
     border: none;
@@ -21,5 +24,9 @@ export const StyledInput = styled.div`
 
   > input::placeholder {
     color: ${({ theme }) => theme.colors.grey};
+  }
+
+  &:has(input:focus) {
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
