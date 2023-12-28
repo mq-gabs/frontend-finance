@@ -1,9 +1,9 @@
 import { StyledSelect } from "./select.styles";
 
 type TSelect = {
-  items: { id: number; value: any; name: string }[];
+  items: { id: number | string; value: any; name?: string }[];
   onChange: (arg: any) => void;
-  selected: any;
+  selected?: any;
 };
 
 export const Select = ({
@@ -13,6 +13,7 @@ export const Select = ({
 }: TSelect) => {
   return (
     <StyledSelect value={selected} onChange={onChange}>
+      <option key="first">-</option>
       {items.map((item) => (
         <option key={item.id}>{item.value}</option>
       ))}

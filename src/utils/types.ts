@@ -17,7 +17,7 @@ export enum EStatus {
   PAYDAY = "PAYDAY",
 }
 
-export type TPayments = {
+export type TPayment = {
   id: string;
   title: string;
   category_id: string;
@@ -32,4 +32,13 @@ export type TPayments = {
   flow: EFlow;
   created_at: string;
   updated_at: string;
+};
+
+export type TCategory = {
+  id: string;
+  name: string;
+  color: string;
+  created_at: string;
+  updated_at: string;
+  user_id: string;
 };

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { getAllPayments } from "../../services";
 import { StyledHome } from "./home.styles";
 import { List } from "./list/list";
-import { TPayments } from "../../utils";
+import { TPayment } from "../../utils";
 
 export const Home = () => {
-  const [pays, setPays] = useState<TPayments[]>([]);
+  const [pays, setPays] = useState<TPayment[]>([]);
   const [paysTotal, setPaysTotal] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
