@@ -3,3 +3,5 @@ export * from "./button";
 export * from "./table";
 export * from "./menu";
 export * from "./select";
+export * from "./icon-button";
+export * from "./icon";

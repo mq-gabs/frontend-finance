@@ -42,3 +42,22 @@ export type TCategory = {
   updated_at: string;
   user_id: string;
 };
+
+export type TIcon =
+  | "edit"
+  | "delete"
+  | "food"
+  | "transport"
+  | "arrowLeft"
+  | "arrowRight"
+  | "give"
+  | "receive"
+  | "save";
+
+export type TColors =
+  | "primary"
+  | "secondary"
+  | "dark"
+  | "light"
+  | "grey"
+  | "lightGrey";

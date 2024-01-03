@@ -40,17 +40,9 @@ export const StyledCategories = styled.main`
     gap: 1rem;
     align-items: center;
   }
-
-  .icon-button {
-    svg {
-      color: ${({ theme }) => theme.colors.primary};
-      cursor: pointer;
-      font-size: 1.5rem;
-    }
-  }
 `;
 
-export const StyledColorTag = styled.li<{ color: string }>`
+export const StyledColorCard = styled.li<{ color: string }>`
   list-style: none;
   color: ${({ theme }) => theme.colors.dark};
   padding: 1rem;

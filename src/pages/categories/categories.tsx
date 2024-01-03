@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { Button, Input } from "../../components";
+import { Button, IconButton, Input } from "../../components";
 import {
   deleteCategory,
   editCategory,
   getAllCategories,
   saveCategory,
 } from "../../services";
-import { StyledCategories, StyledColorTag } from "./categories.styles";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { StyledCategories, StyledColorCard } from "./categories.styles";
 
 export const Categories = () => {
   const [categories, setCategories] = useState<any[]>([]);
-  const [categoriesCount, setCategoriesCount] = useState<number>(0);
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +19,6 @@ export const Categories = () => {
     const response = await getAllCategories({});
 
     setCategories(response[0]);
-    setCategoriesCount(response[1]);
   };
 
   useEffect(() => {
@@ -107,25 +104,22 @@ export const Categories = () => {
         <section className="categories-list">
           <ul>
             {categories.map((category) => (
-              <StyledColorTag color={category.color}>
+              <StyledColorCard color={category.color}>
                 <div className="category-info">
                   <p>{category.name}</p>
                 </div>
                 <div className="category-actions">
-                  <div
-                    className="icon-button"
+                  <IconButton
                     onClick={() => handleEditCategory(category.id)}
-                  >
-                    <MdEdit />
-                  </div>
-                  <div
-                    className="icon-button"
+                    icon="edit"
+                    size={1}
+                  />
+                  <IconButton
                     onClick={() => handleDeleteCategory(category.id)}
-                  >
-                    <MdDelete />
-                  </div>
+                    icon="delete"
+                  />
                 </div>
-              </StyledColorTag>
+              </StyledColorCard>
             ))}
           </ul>
         </section>
