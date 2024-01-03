@@ -3,7 +3,7 @@ import { bright, transition } from "../../assets/theme/animations";
 
 export const StyledInput = styled.div`
   padding: 0rem 1rem;
-  border-radius: 5rem;
+  border-radius: 0.5rem;
   display: grid;
   grid-template-rows: 1fr;
   gap: 1rem;
@@ -19,7 +19,7 @@ export const StyledInput = styled.div`
     border: none;
     outline: none;
     color: ${({ theme }) => theme.colors.dark};
-    background: ${({ theme }) => theme.colors.light};
+    background: none;
   }
 
   > input::placeholder {
@@ -28,5 +28,16 @@ export const StyledInput = styled.div`
 
   &:has(input:focus) {
     border-color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+export const StyledInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    color: ${({ theme }) => theme.colors.dark};
+    font-weight: 500;
   }
 `;

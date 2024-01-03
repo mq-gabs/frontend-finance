@@ -23,7 +23,7 @@ export const localAuthTag = "@finance:auth";
 
 const AuthContext = createContext<TAuthContext>({} as TAuthContext);
 
-const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
+const AuthProvider = ({ children }: { children: ReactNode }) => {
   const storaged = localStorage.getItem(localAuthTag);
 
   const defaultData = JSON.parse(storaged || "{}");

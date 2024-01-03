@@ -1,25 +1,30 @@
-import { StyledInput } from "./input.styles";
+import { StyledInput, StyledInputWrapper } from "./input.styles";
 
 interface IInput {
   type: string;
   value: string | number;
   setValue: (arg: any) => void;
   placeholder: string;
+  name: string;
 }
 
-export const Input = ({ type, value, setValue, placeholder }: IInput) => {
+export const Input = ({ type, value, setValue, placeholder, name }: IInput) => {
   const handleChange = (e: any) => {
     setValue(e.target.value);
   };
 
   return (
-    <StyledInput>
-      <input
-        type={type}
-        value={value}
-        onChange={handleChange}
-        placeholder={placeholder}
-      />
-    </StyledInput>
+    <StyledInputWrapper>
+      <label htmlFor={name}>{name}</label>
+      <StyledInput>
+        <input
+          id={name}
+          type={type}
+          value={value}
+          onChange={handleChange}
+          placeholder={placeholder}
+        />
+      </StyledInput>
+    </StyledInputWrapper>
   );
 };

@@ -18,12 +18,12 @@ export const Menu = () => {
           </Link>
         </li>
         <li>
-          <Link to="/payments/new">
+          <Link to="/pagamentos/novo">
             <FaCirclePlus /> Novo gasto
           </Link>
         </li>
         <li>
-          <Link to="/categories">
+          <Link to="/categorias">
             <BiSolidCategoryAlt /> Categorias
           </Link>
         </li>

@@ -43,7 +43,7 @@ export const List = ({
     const formatedPays = pays.map((pay: any) => [
       formatDate(pay.pay_at),
       pay.title,
-      pay.category_id.slice(0, 5),
+      pay.category_name,
       getFlow(pay.flow),
       formatValue(pay.value),
       formatStatus(pay.status),

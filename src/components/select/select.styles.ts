@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { bright } from "../../assets/theme/animations";
 
 export const StyledSelect = styled.select`
-  border-radius: 5rem;
+  border-radius: 0.5rem;
   height: 3rem;
   border: 3px solid ${({ theme }) => theme.colors.grey};
   background-color: ${({ theme }) => theme.colors.light};
@@ -11,4 +11,15 @@ export const StyledSelect = styled.select`
   outline: none;
   width: 100%;
   ${bright}
+`;
+
+export const StyledSelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.dark};
+  }
 `;

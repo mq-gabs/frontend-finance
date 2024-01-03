@@ -3,7 +3,7 @@ import { TButtonTypes } from ".";
 import { bright, transition } from "../../assets/theme/animations";
 
 export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
-  border-radius: 5rem;
+  border-radius: 0.5rem;
   padding: 0rem 1rem;
   display: grid;
   grid-template-rows: 1fr;

@@ -91,18 +91,21 @@ export const NewPayments = () => {
       <h1>Novo pagamento</h1>
       <form>
         <Input
+          name="Título"
           type="text"
           placeholder="Título"
           value={formData.title}
           setValue={(value) => onChangeFormData(value, "title")}
         />
         <Input
+          name="Valor"
           type="text"
           placeholder="Valor"
           value={formData.value}
           setValue={(value) => onChangeFormData(Number(value), "value")}
         />
         <Select
+          name="Fluxo"
           items={[
             { id: 1, value: "Entrada" },
             { id: 0, value: "Saída" },
@@ -113,11 +116,13 @@ export const NewPayments = () => {
           selected={formData.flow}
         />
         <Select
+          name="Categoria"
           items={categories.map(({ id, name }) => ({ id, value: name }))}
           onChange={({ target }) => onChangeFormData(target.value, "category")}
           selected={formData.category}
         />
         <Select
+          name="Tipo de pagamento"
           items={[
             { id: 0, value: "Único", name: "UNIQUE" },
             { id: 1, value: "Parcelado", name: "INSTALLMENT" },
@@ -129,6 +134,7 @@ export const NewPayments = () => {
           selected={formData.payment_type}
         />
         <Input
+          name="Pagar em"
           type="date"
           placeholder="Data"
           value={formData.pay_at}

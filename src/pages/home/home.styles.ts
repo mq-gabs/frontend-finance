@@ -3,7 +3,7 @@ import { boxShadow, showUp } from "../../assets/theme/animations";
 
 export const StyledHome = styled.main`
   background: ${({ theme }) => theme.colors.light};
-  height: 100vh;
+  height: 100%;
 
   display: grid;
   grid-template-areas:

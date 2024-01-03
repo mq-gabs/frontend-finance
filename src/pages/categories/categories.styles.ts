@@ -11,7 +11,7 @@ export const StyledCategories = styled.main`
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: auto;
-    gap: 1rem;
+    gap: 2rem;
     ${showUp}
   }
 
@@ -21,36 +21,18 @@ export const StyledCategories = styled.main`
   }
 
   .categories-list {
-    margin: 0 auto;
     display: grid;
     gap: 0.5rem;
-    width: 500px;
-    max-width: 500px;
   }
 
   .categories-list ul {
-    display: grid;
+    display: flex;
     gap: 0.5rem;
     width: 100%;
   }
 
-  .categories-list ul li {
-    list-style: none;
-    color: ${({ theme }) => theme.colors.dark};
-    padding: 0.5rem 1rem;
-    border-radius: 5rem;
-    height: 3rem;
-    ${boxShadow}
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   .category-info {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    color: ${({ theme }) => theme.colors.dark};
   }
 
   .category-actions {
@@ -68,10 +50,16 @@ export const StyledCategories = styled.main`
   }
 `;
 
-export const StyledColorTag = styled.div<{ color: string }>`
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  background: ${({ color }) => color};
+export const StyledColorTag = styled.li<{ color: string }>`
+  list-style: none;
+  color: ${({ theme }) => theme.colors.dark};
+  padding: 1rem;
+  border-radius: 0.5rem;
+  aspect-ratio: 1/1;
   ${boxShadow}
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
 `;

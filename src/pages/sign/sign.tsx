@@ -48,24 +48,28 @@ export const Sign = () => {
       <div className="sign up">
         <form>
           <Input
+            name="Nome"
             type="text"
             value={name}
             placeholder="Nome"
             setValue={setName}
           />
           <Input
+            name="E-mail"
             type="text"
             value={email}
             placeholder="E-mail"
             setValue={setEmail}
           />
           <Input
+            name="Senha"
             type="password"
             value={password}
             placeholder="Senha"
             setValue={setPassword}
           />
           <Input
+            name="Repetir senha"
             type="password"
             value={samePassword}
             placeholder="Repetir senha"
@@ -83,12 +87,14 @@ export const Sign = () => {
       <div className="sign in">
         <form>
           <Input
+            name="E-mail"
             type="text"
             value={email}
             placeholder="E-mail"
             setValue={setEmail}
           />
           <Input
+            name="Senha"
             type="password"
             value={password}
             placeholder="Senha"

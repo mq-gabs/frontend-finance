@@ -82,11 +82,13 @@ export const Categories = () => {
               placeholder="Nome"
               value={name}
               setValue={setName}
+              name="Nome"
             />
             <Input
               type="color"
               placeholder="Cor"
               value={color}
+              name="Cor"
               setValue={setColor}
             />
             <Button
@@ -105,9 +107,9 @@ export const Categories = () => {
         <section className="categories-list">
           <ul>
             {categories.map((category) => (
-              <li>
+              <StyledColorTag color={category.color}>
                 <div className="category-info">
-                  <StyledColorTag color={category.color} /> {category.name}
+                  <p>{category.name}</p>
                 </div>
                 <div className="category-actions">
                   <div
@@ -123,7 +125,7 @@ export const Categories = () => {
                     <MdDelete />
                   </div>
                 </div>
-              </li>
+              </StyledColorTag>
             ))}
           </ul>
         </section>
