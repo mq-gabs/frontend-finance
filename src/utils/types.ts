@@ -52,7 +52,12 @@ export type TIcon =
   | "arrowRight"
   | "give"
   | "receive"
-  | "save";
+  | "save"
+  | "gym"
+  | "leisure"
+  | "trip"
+  | "enterteinment"
+  | "study";
 
 export type TColors =
   | "primary"

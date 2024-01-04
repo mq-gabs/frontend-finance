@@ -3,12 +3,12 @@ import { call } from "../utils";
 
 type TSaveCategory = {
   name: string;
-  color: string;
+  icon: string;
 };
 
-export const saveCategory = async ({ name, color }: TSaveCategory) => {
+export const saveCategory = async ({ name, icon }: TSaveCategory) => {
   const response = await call(
-    async () => await api.post("/categories", { name, color })
+    async () => await api.post("/categories", { name, icon })
   );
 
   return response;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, IconButton, Input } from "../../components";
+import { Button, IconButton, Input, Select, icons } from "../../components";
 import {
   deleteCategory,
   editCategory,
@@ -11,7 +11,7 @@ import { StyledCategories, StyledColorCard } from "./categories.styles";
 export const Categories = () => {
   const [categories, setCategories] = useState<any[]>([]);
   const [name, setName] = useState("");
-  const [color, setColor] = useState("");
+  const [icon, setIcon] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
@@ -28,12 +28,12 @@ export const Categories = () => {
   const handleAddCategory = async (e: any) => {
     e.preventDefault();
 
-    const response = await saveCategory({ name, color });
+    const response = await saveCategory({ name, icon });
 
     if (!response) return;
 
     setName("");
-    setColor("");
+    setIcon("");
 
     getCategories();
   };
@@ -41,7 +41,7 @@ export const Categories = () => {
   const applyEditionToCategory = async (e: any) => {
     e.preventDefault();
 
-    await editCategory({ id: selectedId, name, color });
+    await editCategory({ id: selectedId, name, icon });
 
     getCategories();
   };
@@ -59,12 +59,12 @@ export const Categories = () => {
     const category = categories.find((category) => category.id === id);
 
     setName(category.name);
-    setColor(category.color);
+    setIcon(category.color);
   };
 
   const handleCancelEditing = () => {
     setName("");
-    setColor("");
+    setIcon("");
     setIsEditing(false);
   };
 
@@ -81,12 +81,15 @@ export const Categories = () => {
               setValue={setName}
               name="Nome"
             />
-            <Input
-              type="color"
-              placeholder="Cor"
-              value={color}
-              name="Cor"
-              setValue={setColor}
+            <Select
+              key='icons'
+              name="Ícone"
+              onChange={({ target: { value }}) => setIcon(value)}
+              items={Object.keys(icons).map((key, index) => ({
+                id: index,
+                name: key,
+                value: 'asd'
+              }))}
             />
             <Button
               text={isEditing ? "Salvar" : "Adicionar"}

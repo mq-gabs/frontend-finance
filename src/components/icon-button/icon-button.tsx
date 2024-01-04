@@ -7,6 +7,7 @@ interface IIconButton {
   icon: TIcon;
   color?: TColors;
   size?: number;
+  disabled?: boolean;
 }
 
 export const IconButton = ({
@@ -14,10 +15,15 @@ export const IconButton = ({
   icon,
   color = "primary",
   size = 1,
+  disabled = false,
 }: IIconButton) => {
   return (
-    <StyledIconButton onClick={onClick} color={color} size={size}>
-      <Icon name={icon} size={size} color={color} />
+    <StyledIconButton
+      onClick={disabled ? () => {} : onClick}
+      size={size}
+      disabled={disabled}
+    >
+      <Icon name={icon} size={size} color={disabled ? "grey" : color} />
     </StyledIconButton>
   );
 };

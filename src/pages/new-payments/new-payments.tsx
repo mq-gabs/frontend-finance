@@ -19,7 +19,7 @@ export const NewPayments = () => {
   );
   const [categories, setCategories] = useState<TCategory[]>([]);
 
-  console.log({ formData });
+    console.log({ formData });
 
   const onChangeFormData = (value: any, field: string) => {
     console.log({ value });
@@ -38,35 +38,16 @@ export const NewPayments = () => {
     getCategories();
   }, []);
 
-  const getFlow = (value: string) => {
-    if (value === "Entrada") return "IN";
-    if (value === "Saída") return "OUT";
-    return;
-  };
-
-  const getCategoryId = (name: string) => {
-    const category = categories.find((category) => category.name === name);
-
-    return category?.id;
-  };
-
-  const getPaymentType = (value: string) => {
-    if (value === "Único") return "UNIQUE";
-    if (value === "Recorrente") return "RECURRENT";
-    if (value === "Parcelado") return "INSTALLMENT";
-    return;
-  };
-
   const submitPayment = async (e: any) => {
     e.preventDefault();
 
     const { category, flow, pay_at, payment_type, title, value } = formData;
 
-    const _category = getCategoryId(category);
+    const _category = category;
     // @ts-expect-error
-    const _flow: EFlow = getFlow(flow);
+    const _flow: EFlow = flow;
     // @ts-expect-error
-    const _paymentType: EPaymentType = getPaymentType(payment_type);
+    const _paymentType: EPaymentType = payment_type;
 
     if (!_category || !_flow || !_paymentType || !pay_at || !title || !value) {
       alert("Preencha todos os campos!");
@@ -107,31 +88,28 @@ export const NewPayments = () => {
         <Select
           name="Fluxo"
           items={[
-            { id: 1, value: "Entrada" },
-            { id: 0, value: "Saída" },
+            { id: 1, name: "Entrada", value: 'IN' },
+            { id: 0, name: "Saída", value: 'OUT' },
           ]}
-          onChange={({ target }) =>
-            onChangeFormData(target.value || "-", "flow")
+          onChange={(value) =>
+            onChangeFormData(value, "flow")
           }
-          selected={formData.flow}
         />
         <Select
           name="Categoria"
-          items={categories.map(({ id, name }) => ({ id, value: name }))}
-          onChange={({ target }) => onChangeFormData(target.value, "category")}
-          selected={formData.category}
+          items={categories.map(({ id, name }) => ({ id, value: id, name, }))}
+          onChange={(value) => onChangeFormData(value, "category")}
         />
         <Select
           name="Tipo de pagamento"
           items={[
-            { id: 0, value: "Único", name: "UNIQUE" },
-            { id: 1, value: "Parcelado", name: "INSTALLMENT" },
-            { id: 2, value: "Recorrente", name: "RECURRENT" },
+            { id: 0, name: "Único", value: "UNIQUE" },
+            { id: 1, name: "Parcelado", value: "INSTALLMENT" },
+            { id: 2, name: "Recorrente", value: "RECURRENT" },
           ]}
-          onChange={({ target }) =>
-            onChangeFormData(target.value, "payment_type")
+          onChange={(value) =>
+            onChangeFormData(value, "payment_type")
           }
-          selected={formData.payment_type}
         />
         <Input
           name="Pagar em"

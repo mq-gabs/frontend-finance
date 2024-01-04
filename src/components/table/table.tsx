@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { StyledPagination, StyledTable } from "./table.styles";
-import { IoIosArrowDropleftCircle as ArrowLeft } from "react-icons/io";
-import { IoIosArrowDroprightCircle as ArrowRight } from "react-icons/io";
+import { IconButton } from "..";
 interface ITable {
   columnsNames: string[];
   data: any[][];
@@ -69,18 +68,16 @@ export const Table = ({
           <p>por página.</p>
         </div>
         <div className="pagination actions">
-          <div
-            className={page === 0 ? "disabled" : ""}
+          <IconButton
+            disabled={page === 0}
+            icon="arrowLeft"
             onClick={onPreviousPage}
-          >
-            <ArrowLeft />
-          </div>
-          <div
-            className={pageSize * (page + 1) >= total ? "disabled" : ""}
+          />
+          <IconButton
+            disabled={pageSize * (page + 1) >= total}
+            icon="arrowRight"
             onClick={onNextPage}
-          >
-            <ArrowRight />
-          </div>
+          />
         </div>
       </StyledPagination>
     </>
