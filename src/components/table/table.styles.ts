@@ -23,6 +23,10 @@ export const StyledTable = styled.table<{ size: number }>`
     border-radius: 0 0.5rem 0 0;
   }
 
+  tr:nth-child(2n) {
+    background: ${({ theme }) => theme.colors.lightGrey};
+  }
+
   th {
     text-align: left;
     padding: 0.5rem;

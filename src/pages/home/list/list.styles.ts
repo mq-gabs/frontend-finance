@@ -6,3 +6,9 @@ export const StyledList = styled.div`
     margin-bottom: 1rem;
   }
 `;
+
+export const StyledCategoryCell = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;

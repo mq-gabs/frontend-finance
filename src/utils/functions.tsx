@@ -1,4 +1,5 @@
 import { EFlow, EStatus } from ".";
+import { Icon } from "../components";
 
 export const formatDate = (date: string) => {
   const dt = new Date(date);
@@ -12,8 +13,8 @@ export const formatDate = (date: string) => {
 };
 
 export const getFlow = (flow: EFlow) => {
-  if (flow === EFlow.OUT) return "Perda";
-  if (flow === EFlow.IN) return "Ganho";
+  if (flow === EFlow.OUT) return <Icon name="exit" color="red" />;
+  if (flow === EFlow.IN) return <Icon name="enter" color="green" />;
 
   return "-";
 };

@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Table } from "../../../components";
-import { StyledList } from "./list.styles";
+import { Icon, Table } from "../../../components";
+import { StyledCategoryCell, StyledList } from "./list.styles";
+
+import { TIcon } from "../../../utils";
 import {
   formatDate,
   formatStatus,
@@ -39,11 +41,18 @@ export const List = ({
 
   const Actions = () => <>act</>;
 
+  const Category = ({ name, icon }: { name: string; icon: TIcon }) => (
+    <StyledCategoryCell>
+      <Icon name={icon} />
+      <p>{name}</p>
+    </StyledCategoryCell>
+  );
+
   useEffect(() => {
     const formatedPays = pays.map((pay: any) => [
       formatDate(pay.pay_at),
       pay.title,
-      pay.category_name,
+      <Category name={pay.category_name} icon={pay.category_icon} />,
       getFlow(pay.flow),
       formatValue(pay.value),
       formatStatus(pay.status),

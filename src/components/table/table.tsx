@@ -65,7 +65,7 @@ export const Table = ({
             <option>50</option>
             <option>100</option>
           </select>
-          <p>por página.</p>
+          <p>linhas por página.</p>
         </div>
         <div className="pagination actions">
           <IconButton

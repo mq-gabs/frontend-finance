@@ -29,7 +29,7 @@ export const NewPayments = () => {
   };
 
   const getCategories = async () => {
-    const response = await getAllCategories({});
+    const response = await getAllCategories({ pageSize: 100 });
 
     if (!response) return;
 
@@ -40,9 +40,7 @@ export const NewPayments = () => {
     getCategories();
   }, []);
 
-  const submitPayment = async (e: any) => {
-    e.preventDefault();
-
+  const submitPayment = async () => {
     const {
       category_id,
       flow,
@@ -71,6 +69,8 @@ export const NewPayments = () => {
     });
 
     if (!response) alert("Deu erro");
+
+    setFormData({} as TNewPaymentForm);
   };
 
   return (

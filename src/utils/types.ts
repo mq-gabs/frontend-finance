@@ -64,7 +64,14 @@ export type TIcon =
   | "doctor"
   | "game"
   | "sport"
-  | "device";
+  | "device"
+  | "exit"
+  | "enter"
+  | "warn"
+  | "ok"
+  | "late"
+  | "cancel"
+  | "payday";
 
 export type TColors =
   | "primary"
@@ -72,4 +79,6 @@ export type TColors =
   | "dark"
   | "light"
   | "grey"
-  | "lightGrey";
+  | "lightGrey"
+  | "red"
+  | "green";
