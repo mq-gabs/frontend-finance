@@ -2,7 +2,7 @@ import { StyledInput, StyledInputWrapper } from "./input.styles";
 
 interface IInput {
   type: string;
-  value: string | number;
+  value: any;
   setValue: (arg: any) => void;
   placeholder: string;
   name: string;

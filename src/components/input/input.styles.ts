@@ -22,6 +22,12 @@ export const StyledInput = styled.div`
     background: none;
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   > input::placeholder {
     color: ${({ theme }) => theme.colors.grey};
   }

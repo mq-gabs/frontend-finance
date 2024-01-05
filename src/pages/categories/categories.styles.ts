@@ -10,7 +10,7 @@ export const StyledCategories = styled.main`
   .categories-content {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-rows: auto;
+    // grid-template-rows: auto;
     gap: 2rem;
     ${showUp}
   }
@@ -21,18 +21,19 @@ export const StyledCategories = styled.main`
   }
 
   .categories-list {
-    display: grid;
-    gap: 0.5rem;
   }
 
   .categories-list ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     width: 100%;
   }
 
   .category-info {
     color: ${({ theme }) => theme.colors.dark};
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   .category-actions {
@@ -42,13 +43,14 @@ export const StyledCategories = styled.main`
   }
 `;
 
-export const StyledColorCard = styled.li<{ color: string }>`
+export const StyledCategoryCard = styled.li`
   list-style: none;
   color: ${({ theme }) => theme.colors.dark};
   padding: 1rem;
   border-radius: 0.5rem;
-  aspect-ratio: 1/1;
   ${boxShadow}
+  width: 12rem;
+  aspect-ratio: 1/1;
   display: flex;
   flex-direction: column;
   gap: 1rem;

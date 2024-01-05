@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
-import { Button, IconButton, Input, Select, icons } from "../../components";
+import {
+  Button,
+  Icon,
+  IconButton,
+  Input,
+  Select,
+  icons,
+} from "../../components";
 import {
   deleteCategory,
   editCategory,
   getAllCategories,
   saveCategory,
 } from "../../services";
-import { StyledCategories, StyledColorCard } from "./categories.styles";
+import { StyledCategories, StyledCategoryCard } from "./categories.styles";
+import { TCategory } from "../../utils";
 
 export const Categories = () => {
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<TCategory[]>([]);
   const [name, setName] = useState("");
   const [icon, setIcon] = useState("");
   const [isEditing, setIsEditing] = useState(false);
@@ -53,13 +61,17 @@ export const Categories = () => {
   };
 
   const handleEditCategory = async (id: string) => {
+    const category = categories.find((category) => category.id === id);
+
+    if (!category) return;
+
     setSelectedId(id);
     setIsEditing(true);
 
-    const category = categories.find((category) => category.id === id);
+    console.log({ name: category.name, icon: category.icon });
 
     setName(category.name);
-    setIcon(category.color);
+    setIcon(category.icon);
   };
 
   const handleCancelEditing = () => {
@@ -67,6 +79,8 @@ export const Categories = () => {
     setIcon("");
     setIsEditing(false);
   };
+
+  console.log({ name, icon });
 
   return (
     <StyledCategories>
@@ -82,17 +96,18 @@ export const Categories = () => {
               name="Nome"
             />
             <Select
-              key='icons'
+              key="icons"
               name="Ícone"
-              onChange={({ target: { value }}) => setIcon(value)}
+              selected={icon}
+              onChange={(value) => setIcon(value)}
               items={Object.keys(icons).map((key, index) => ({
                 id: index,
                 name: key,
-                value: 'asd'
+                value: key,
               }))}
             />
             <Button
-              text={isEditing ? "Salvar" : "Adicionar"}
+              text={isEditing ? `Editar ${name}` : "Adicionar"}
               onClick={isEditing ? applyEditionToCategory : handleAddCategory}
             />
             {isEditing && (
@@ -106,24 +121,26 @@ export const Categories = () => {
         </section>
         <section className="categories-list">
           <ul>
-            {categories.map((category) => (
-              <StyledColorCard color={category.color}>
-                <div className="category-info">
-                  <p>{category.name}</p>
-                </div>
-                <div className="category-actions">
-                  <IconButton
-                    onClick={() => handleEditCategory(category.id)}
-                    icon="edit"
-                    size={1}
-                  />
-                  <IconButton
-                    onClick={() => handleDeleteCategory(category.id)}
-                    icon="delete"
-                  />
-                </div>
-              </StyledColorCard>
-            ))}
+            {categories.length !== 0 &&
+              categories.map((category) => (
+                <StyledCategoryCard key={category.id}>
+                  <div className="category-info">
+                    <p>{category.name}</p>
+                  </div>
+                  <Icon name={category.icon} size={3} />
+                  <div className="category-actions">
+                    <IconButton
+                      onClick={() => handleEditCategory(category.id)}
+                      icon="edit"
+                      size={1}
+                    />
+                    <IconButton
+                      onClick={() => handleDeleteCategory(category.id)}
+                      icon="delete"
+                    />
+                  </div>
+                </StyledCategoryCard>
+              ))}
           </ul>
         </section>
       </div>

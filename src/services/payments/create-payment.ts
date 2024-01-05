@@ -10,6 +10,7 @@ type TCreatePayment = {
   total: number;
   payment_type: EPaymentType;
   flow: EFlow;
+  installment_total?: number,
 };
 
 export const createPayment = async ({
@@ -20,6 +21,7 @@ export const createPayment = async ({
   payment_type,
   value,
   total,
+  installment_total,
 }: TCreatePayment) => {
   const response = await call(
     async () =>
@@ -31,6 +33,7 @@ export const createPayment = async ({
         payment_type,
         value,
         total,
+        installment_total,
       })
   );
 

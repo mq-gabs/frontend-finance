@@ -33,11 +33,11 @@ export const icons = {
 export const Icon = ({
   name = "edit",
   size = 1,
-  color,
+  color = "primary",
 }: {
   name: TIcon;
-  size: number;
-  color: TColors;
+  size?: number;
+  color?: TColors;
 }) => {
   const RenderIcon = icons[name];
 

@@ -37,7 +37,7 @@ export type TPayment = {
 export type TCategory = {
   id: string;
   name: string;
-  color: string;
+  icon: TIcon;
   created_at: string;
   updated_at: string;
   user_id: string;

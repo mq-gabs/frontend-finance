@@ -10,7 +10,14 @@ export const StyledSelect = styled.select`
   padding: 0 1rem;
   outline: none;
   width: 100%;
-  ${bright}
+
+  &:hover {
+    ${bright}
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 export const StyledSelectWrapper = styled.div`
