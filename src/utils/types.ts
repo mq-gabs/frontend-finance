@@ -57,7 +57,8 @@ export type TIcon =
   | "leisure"
   | "trip"
   | "enterteinment"
-  | "study";
+  | "study"
+  | "cross";
 
 export type TColors =
   | "primary"

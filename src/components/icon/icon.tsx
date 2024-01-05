@@ -10,7 +10,7 @@ import { GiPayMoney, GiReceiveMoney } from "react-icons/gi";
 import { TbPigMoney } from "react-icons/tb";
 import { CgGym } from "react-icons/cg";
 import { FaMasksTheater } from "react-icons/fa6";
-import { ImAirplane } from "react-icons/im";
+import { ImAirplane, ImCross } from "react-icons/im";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 
 export const icons = {
@@ -28,6 +28,7 @@ export const icons = {
   trip: ImAirplane,
   enterteinment: PiTelevisionSimpleFill,
   study: FaBook,
+  cross: ImCross,
 };
 
 export const Icon = ({
