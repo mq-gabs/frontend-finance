@@ -3,7 +3,7 @@ import { TColors, TIcon } from "../../utils";
 import { Icon } from "..";
 
 interface IIconButton {
-  onClick: () => void;
+  onClick: (a: any) => void;
   icon: TIcon;
   color?: TColors;
   size?: number;

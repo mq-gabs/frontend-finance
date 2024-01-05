@@ -1,17 +1,25 @@
-import { MdDelete, MdEdit, MdFastfood } from "react-icons/md";
-import { FaCarSide, FaBook } from "react-icons/fa";
 import { TColors, TIcon } from "../../utils";
 import { StyledIcon } from "./icon.styles";
 import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
-import { GiPayMoney, GiReceiveMoney } from "react-icons/gi";
-import { TbPigMoney } from "react-icons/tb";
+
 import { CgGym } from "react-icons/cg";
-import { FaMasksTheater } from "react-icons/fa6";
+import { FaCarSide, FaBook, FaSearch } from "react-icons/fa";
+import { FaMasksTheater, FaUserDoctor } from "react-icons/fa6";
+import { GiPayMoney, GiReceiveMoney, GiMedicines } from "react-icons/gi";
 import { ImAirplane, ImCross } from "react-icons/im";
+import {
+  MdDelete,
+  MdEdit,
+  MdFastfood,
+  MdSportsEsports,
+  MdSportsTennis,
+  MdDevicesOther,
+} from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
+import { TbPigMoney } from "react-icons/tb";
 
 export const icons = {
   edit: MdEdit,
@@ -29,6 +37,12 @@ export const icons = {
   enterteinment: PiTelevisionSimpleFill,
   study: FaBook,
   cross: ImCross,
+  search: FaSearch,
+  pills: GiMedicines,
+  doctor: FaUserDoctor,
+  game: MdSportsEsports,
+  sport: MdSportsTennis,
+  device: MdDevicesOther,
 };
 
 export const Icon = ({

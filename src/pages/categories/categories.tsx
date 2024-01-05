@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Button,
-  Icon,
-  IconButton,
-  Input,
-  Select,
-  icons,
-} from "../../components";
+import { Button, Icon, IconButton, Input } from "../../components";
 import {
   deleteCategory,
   editCategory,
@@ -14,18 +7,21 @@ import {
   saveCategory,
 } from "../../services";
 import { StyledCategories, StyledCategoryCard } from "./categories.styles";
-import { TCategory } from "../../utils";
+import { TCategory, TIcon } from "../../utils";
+import { CategorySelect } from "../../components/category-select/category-select";
 
 export const Categories = () => {
   const [categories, setCategories] = useState<TCategory[]>([]);
   const [name, setName] = useState("");
-  const [icon, setIcon] = useState("");
+  const [editingName, setEditingName] = useState<string>("");
+  const [icon, setIcon] = useState<TIcon | "">("");
   const [isEditing, setIsEditing] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
   const getCategories = async () => {
-    const response = await getAllCategories({});
+    const response = await getAllCategories({ pageSize: 100 });
 
+    console.log({ response });
     setCategories(response[0]);
   };
 
@@ -51,6 +47,8 @@ export const Categories = () => {
 
     await editCategory({ id: selectedId, name, icon });
 
+    handleClearInputs();
+
     getCategories();
   };
 
@@ -60,7 +58,7 @@ export const Categories = () => {
     getCategories();
   };
 
-  const handleEditCategory = async (id: string) => {
+  const handleClickToEditCategory = async (id: string) => {
     const category = categories.find((category) => category.id === id);
 
     if (!category) return;
@@ -68,19 +66,21 @@ export const Categories = () => {
     setSelectedId(id);
     setIsEditing(true);
 
-    console.log({ name: category.name, icon: category.icon });
-
     setName(category.name);
     setIcon(category.icon);
+    setEditingName(category.name);
   };
-
-  const handleCancelEditing = () => {
+  const handleClearInputs = (e?: any) => {
+    e?.preventDefault();
     setName("");
     setIcon("");
-    setIsEditing(false);
   };
 
-  console.log({ name, icon });
+  const handleCancelEditing = (e: any) => {
+    e.preventDefault();
+    handleClearInputs(e);
+    setIsEditing(false);
+  };
 
   return (
     <StyledCategories>
@@ -95,28 +95,16 @@ export const Categories = () => {
               setValue={setName}
               name="Nome"
             />
-            <Select
-              key="icons"
-              name="Ícone"
-              selected={icon}
-              onChange={(value) => setIcon(value)}
-              items={Object.keys(icons).map((key, index) => ({
-                id: index,
-                name: key,
-                value: key,
-              }))}
-            />
+            <CategorySelect icon={icon} changeIcon={setIcon} />
             <Button
-              text={isEditing ? `Editar ${name}` : "Adicionar"}
+              text={isEditing ? `Editar ${editingName}` : "Adicionar"}
               onClick={isEditing ? applyEditionToCategory : handleAddCategory}
             />
-            {isEditing && (
-              <Button
-                text="Cancelar"
-                onClick={handleCancelEditing}
-                type="secondary"
-              />
-            )}
+            <Button
+              text={isEditing ? "Cancelar" : "Limpar"}
+              onClick={handleCancelEditing}
+              type="secondary"
+            />
           </form>
         </section>
         <section className="categories-list">
@@ -130,7 +118,7 @@ export const Categories = () => {
                   <Icon name={category.icon} size={3} />
                   <div className="category-actions">
                     <IconButton
-                      onClick={() => handleEditCategory(category.id)}
+                      onClick={() => handleClickToEditCategory(category.id)}
                       icon="edit"
                       size={1}
                     />

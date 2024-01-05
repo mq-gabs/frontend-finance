@@ -10,8 +10,7 @@ export const StyledCategories = styled.main`
   .categories-content {
     display: grid;
     grid-template-columns: 30% 70%;
-    // grid-template-rows: auto;
-    gap: 2rem;
+    gap: 1rem;
     ${showUp}
   }
 
@@ -20,14 +19,13 @@ export const StyledCategories = styled.main`
     gap: 1rem;
   }
 
-  .categories-list {
-  }
+  // .categories-list {
+  // }
 
   .categories-list ul {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    width: 100%;
   }
 
   .category-info {

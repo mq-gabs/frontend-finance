@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { showUp } from "../../assets/theme/animations";
 
 export const StyledNewPayments = styled.main`
+  h1 {
+    font-size: 2rem;
+  }
+
   > form {
     display: grid;
     gap: 0.5rem;

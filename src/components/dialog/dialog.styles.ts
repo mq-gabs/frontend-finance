@@ -48,7 +48,6 @@ export const StyledDialogTop = styled.div`
 `;
 
 export const StyledDialogContent = styled.div`
-  padding: 1rem;
   width: 100%;
   background: ${({ theme }) => theme.colors.light};
   border-radius: 0 0 0.5rem 0.5rem;
