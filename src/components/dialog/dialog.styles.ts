@@ -51,4 +51,5 @@ export const StyledDialogContent = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.colors.light};
   border-radius: 0 0 0.5rem 0.5rem;
+  padding: 5px;
 `;

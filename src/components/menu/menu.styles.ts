@@ -10,10 +10,12 @@ export const StyledMenu = styled.aside`
   background: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
+  justify-content: center;
 
   ul {
     display: grid;
     gap: 2rem;
+    width: 100%;
   }
 
   ul li {

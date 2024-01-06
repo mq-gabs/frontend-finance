@@ -19,7 +19,7 @@ export const Menu = () => {
         </li>
         <li>
           <Link to="/pagamentos/novo">
-            <FaCirclePlus /> Novo gasto
+            <FaCirclePlus /> Novo 
           </Link>
         </li>
         <li>

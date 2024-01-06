@@ -5,7 +5,9 @@ export const formatDate = (date: string) => {
   const dt = new Date(date);
   const month = dt.getMonth() + 1;
 
-  return `${dt.getDate().toLocaleString("pt-br", {
+  const day = dt.getDate() + 1;
+
+  return `${day.toLocaleString("pt-br", {
     minimumIntegerDigits: 2,
   })}/${month.toLocaleString("pt-br", {
     minimumIntegerDigits: 2,
@@ -19,7 +21,7 @@ export const getFlow = (flow: EFlow) => {
   return "-";
 };
 
-export const formatValue = (value: number) => {
+export const formatTotal = (value: number) => {
   return (
     "R$ " +
     value.toLocaleString("pt-br", {
@@ -37,11 +39,13 @@ export const formatStatus = (status: EStatus) => {
   if (status === EStatus.PENDING) return "Pendente";
   return "-";
 };
-export const formatStatusIcon = (status: EStatus): { name: TIcon, color: TColors } => {
-  if (status === EStatus.CANCELLED) return { name: "cancel", color: 'red' };
-  if (status === EStatus.LATE) return { name: "late", color: 'orange' };
-  if (status === EStatus.PAID) return { name: "ok", color: 'green' };
-  if (status === EStatus.PAYDAY) return { name: "payday", color: 'blue' };
-  if (status === EStatus.PENDING) return { name: "warn", color: 'yellow' };
-  return { name: 'cancel', color: 'red' };
+export const formatStatusIcon = (
+  status: EStatus
+): { name: TIcon; color: TColors } => {
+  if (status === EStatus.CANCELLED) return { name: "cancel", color: "red" };
+  if (status === EStatus.LATE) return { name: "late", color: "orange" };
+  if (status === EStatus.PAID) return { name: "ok", color: "green" };
+  if (status === EStatus.PAYDAY) return { name: "payday", color: "blue" };
+  if (status === EStatus.PENDING) return { name: "warn", color: "yellow" };
+  return { name: "cancel", color: "red" };
 };

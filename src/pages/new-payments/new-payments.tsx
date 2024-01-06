@@ -3,15 +3,15 @@ import { Button, Input, Select } from "../../components";
 import { EFlow, EPaymentType, TCategory } from "../../utils";
 import { StyledNewPayments } from "./new-payments.styles";
 import { createPayment, getAllCategories } from "../../services";
+import { formatTotal } from "./utils";
 
 type TNewPaymentForm = {
   title: string;
   pay_at: string;
   category_id: string;
-  value: string;
   payment_type: EPaymentType;
   flow: EFlow;
-  total?: number;
+  total: number;
   installment_total?: number;
 };
 
@@ -40,27 +40,26 @@ export const NewPayments = () => {
     getCategories();
   }, []);
 
-  const submitPayment = async () => {
+  const submitPayment = async (e: any) => {
     const {
       category_id,
       flow,
       pay_at,
       payment_type,
       title,
-      value,
       total,
       installment_total,
     } = formData;
 
-    if (!category_id || !flow || !payment_type || !pay_at || !title || !value) {
+    if (!category_id || !flow || !payment_type || !pay_at || !title || !total) {
+      e.preventDefault();
       alert("Preencha todos os campos!");
       return;
     }
 
     const response = await createPayment({
       title,
-      value: Number(value),
-      total: Number(value || total),
+      total: formatTotal(total),
       category_id,
       flow,
       pay_at,
@@ -93,26 +92,6 @@ export const NewPayments = () => {
           onChange={(value) => onChangeFormData(value, "flow")}
           selected={formData.flow}
         />
-        <Input
-          name="Valor"
-          type="text"
-          placeholder="Valor"
-          value={formData.value}
-          setValue={(value) => onChangeFormData(value, "value")}
-        />
-        <Select
-          name="Categoria"
-          items={categories.map(({ id, name }) => ({ id, value: id, name }))}
-          onChange={(value) => onChangeFormData(value, "category_id")}
-          selected={formData.category_id}
-        />
-        <Input
-          name="Pagamento em"
-          type="date"
-          placeholder="Data"
-          value={formData.pay_at}
-          setValue={(value) => onChangeFormData(value, "pay_at")}
-        />
         <Select
           name="Tipo de pagamento"
           items={[
@@ -123,15 +102,38 @@ export const NewPayments = () => {
           selected={formData.payment_type}
           onChange={(value) => onChangeFormData(value, "payment_type")}
         />
+        <Input
+          name="Total"
+          type="text"
+          placeholder="Total"
+          value={formData.total}
+          setValue={(value) => onChangeFormData(value, "total")}
+          isCurrency
+        />
         {formData.payment_type === EPaymentType.INSTALLMENT && (
-          <Input
-            type="number"
-            name="Número de parcelas"
-            placeholder="Número de parcelas"
-            setValue={(value) => onChangeFormData(value, "installment_total")}
-            value={formData.installment_total || ""}
-          />
+          <>
+            <Input
+              type="number"
+              name="Número de parcelas"
+              placeholder="Número de parcelas"
+              setValue={(value) => onChangeFormData(value, "installment_total")}
+              value={formData.installment_total || ""}
+            />
+          </>
         )}
+        <Select
+          name="Categoria"
+          items={categories.map(({ id, name }) => ({ id, value: id, name }))}
+          onChange={(value) => onChangeFormData(value, "category_id")}
+          selected={formData.category_id}
+        />
+        <Input
+          name="Pagamento em"
+          type="date"
+          placeholder="dd-mm-yyyy"
+          value={formData.pay_at}
+          setValue={(value) => onChangeFormData(value, "pay_at")}
+        />
         <Button text="Criar" onClick={submitPayment} />
       </form>
     </StyledNewPayments>

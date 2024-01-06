@@ -6,11 +6,10 @@ type TCreatePayment = {
   title: string;
   pay_at: string;
   category_id: string;
-  value: number;
   total: number;
   payment_type: EPaymentType;
   flow: EFlow;
-  installment_total?: number,
+  installment_total?: number;
 };
 
 export const createPayment = async ({
@@ -19,7 +18,6 @@ export const createPayment = async ({
   flow,
   pay_at,
   payment_type,
-  value,
   total,
   installment_total,
 }: TCreatePayment) => {
@@ -31,7 +29,6 @@ export const createPayment = async ({
         flow,
         pay_at,
         payment_type,
-        value,
         total,
         installment_total,
       })

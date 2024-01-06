@@ -7,7 +7,7 @@ import {
   formatDate,
   formatStatus,
   formatStatusIcon,
-  formatValue,
+  formatTotal,
   getFlow,
 } from "../../../utils/functions";
 
@@ -35,7 +35,7 @@ export const List = ({
     "Título",
     "Categoria",
     "Fluxo",
-    "Valor",
+    "Total",
     "Status",
     "Ações",
   ];
@@ -49,17 +49,16 @@ export const List = ({
     </StyledFormatedCell>
   );
 
-  const Status = ({ name }: { name: EStatus}) => {
+  const Status = ({ name }: { name: EStatus }) => {
     const statusIconInfo = formatStatusIcon(name);
-    
-    return (
-    <StyledFormatedCell>
-      <Icon name={statusIconInfo.name} color={statusIconInfo.color} />
-      <p>{formatStatus(name)}</p>
-    </StyledFormatedCell>
-    )
-  }
 
+    return (
+      <StyledFormatedCell>
+        <Icon name={statusIconInfo.name} color={statusIconInfo.color} />
+        <p>{formatStatus(name)}</p>
+      </StyledFormatedCell>
+    );
+  };
 
   useEffect(() => {
     const formatedPays = pays.map((pay: TPayment) => [
@@ -67,10 +66,11 @@ export const List = ({
       pay.title,
       <Category name={pay.category_name} icon={pay.category_icon} />,
       getFlow(pay.flow),
-      formatValue(pay.value),
+      formatTotal(pay.value),
       <Status name={pay.status} />,
       <Actions />,
     ]);
+
     setData(formatedPays);
   }, [pays]);
 
