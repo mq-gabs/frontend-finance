@@ -1,11 +1,12 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Icon, Table } from "../../../components";
-import { StyledCategoryCell, StyledList } from "./list.styles";
+import { StyledFormatedCell, StyledList } from "./list.styles";
 
-import { TIcon } from "../../../utils";
+import { EStatus, TIcon, TPayment } from "../../../utils";
 import {
   formatDate,
   formatStatus,
+  formatStatusIcon,
   formatValue,
   getFlow,
 } from "../../../utils/functions";
@@ -30,7 +31,7 @@ export const List = ({
   const [data, setData] = useState<any[][]>([[]]);
 
   const columnsNames = [
-    "Pagar em",
+    "Pagamento em",
     "Título",
     "Categoria",
     "Fluxo",
@@ -42,20 +43,32 @@ export const List = ({
   const Actions = () => <>act</>;
 
   const Category = ({ name, icon }: { name: string; icon: TIcon }) => (
-    <StyledCategoryCell>
+    <StyledFormatedCell>
       <Icon name={icon} />
       <p>{name}</p>
-    </StyledCategoryCell>
+    </StyledFormatedCell>
   );
 
+  const Status = ({ name }: { name: EStatus}) => {
+    const statusIconInfo = formatStatusIcon(name);
+    
+    return (
+    <StyledFormatedCell>
+      <Icon name={statusIconInfo.name} color={statusIconInfo.color} />
+      <p>{formatStatus(name)}</p>
+    </StyledFormatedCell>
+    )
+  }
+
+
   useEffect(() => {
-    const formatedPays = pays.map((pay: any) => [
+    const formatedPays = pays.map((pay: TPayment) => [
       formatDate(pay.pay_at),
       pay.title,
       <Category name={pay.category_name} icon={pay.category_icon} />,
       getFlow(pay.flow),
       formatValue(pay.value),
-      formatStatus(pay.status),
+      <Status name={pay.status} />,
       <Actions />,
     ]);
     setData(formatedPays);

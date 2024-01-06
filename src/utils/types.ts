@@ -21,6 +21,8 @@ export type TPayment = {
   id: string;
   title: string;
   category_id: string;
+  category_name: string;
+  category_icon: TIcon;
   pay_at: string;
   user_id: string;
   value: number;
@@ -81,4 +83,7 @@ export type TColors =
   | "grey"
   | "lightGrey"
   | "red"
-  | "green";
+  | "green"
+  | 'yellow'
+  | 'blue'
+  | 'orange';

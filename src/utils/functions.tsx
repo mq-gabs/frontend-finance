@@ -1,4 +1,4 @@
-import { EFlow, EStatus } from ".";
+import { EFlow, EStatus, TColors, TIcon } from ".";
 import { Icon } from "../components";
 
 export const formatDate = (date: string) => {
@@ -36,4 +36,12 @@ export const formatStatus = (status: EStatus) => {
   if (status === EStatus.PAYDAY) return "Pague hoje";
   if (status === EStatus.PENDING) return "Pendente";
   return "-";
+};
+export const formatStatusIcon = (status: EStatus): { name: TIcon, color: TColors } => {
+  if (status === EStatus.CANCELLED) return { name: "cancel", color: 'red' };
+  if (status === EStatus.LATE) return { name: "late", color: 'orange' };
+  if (status === EStatus.PAID) return { name: "ok", color: 'green' };
+  if (status === EStatus.PAYDAY) return { name: "payday", color: 'blue' };
+  if (status === EStatus.PENDING) return { name: "warn", color: 'yellow' };
+  return { name: 'cancel', color: 'red' };
 };

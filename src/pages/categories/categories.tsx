@@ -29,8 +29,7 @@ export const Categories = () => {
     getCategories();
   }, []);
 
-  const handleAddCategory = async (e: any) => {
-    e.preventDefault();
+  const handleCreateCategory = async () => {
 
     const response = await saveCategory({ name, icon });
 
@@ -39,7 +38,6 @@ export const Categories = () => {
     setName("");
     setIcon("");
 
-    getCategories();
   };
 
   const applyEditionToCategory = async (e: any) => {
@@ -97,8 +95,8 @@ export const Categories = () => {
             />
             <CategorySelect icon={icon} changeIcon={setIcon} />
             <Button
-              text={isEditing ? `Editar ${editingName}` : "Adicionar"}
-              onClick={isEditing ? applyEditionToCategory : handleAddCategory}
+              text={isEditing ? `Editar ${editingName}` : "Criar categoria"}
+              onClick={isEditing ? applyEditionToCategory : handleCreateCategory}
             />
             <Button
               text={isEditing ? "Cancelar" : "Limpar"}

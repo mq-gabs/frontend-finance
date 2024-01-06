@@ -107,7 +107,7 @@ export const NewPayments = () => {
           selected={formData.category_id}
         />
         <Input
-          name="Pagar em"
+          name="Pagamento em"
           type="date"
           placeholder="Data"
           value={formData.pay_at}
