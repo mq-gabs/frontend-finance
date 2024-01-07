@@ -24,16 +24,7 @@ export const Home = () => {
   return (
     <StyledHome>
       <section className="filters"></section>
-      <section className="list">
-        <List
-          pays={pays}
-          paysCount={paysTotal}
-          page={page}
-          setPage={setPage}
-          pageSize={pageSize}
-          setPageSize={setPageSize}
-        />
-      </section>
+      <section className="list"></section>
       <section className="total"></section>
       <section className="other"></section>
     </StyledHome>

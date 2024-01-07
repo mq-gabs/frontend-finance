@@ -7,9 +7,10 @@ export const StyledHome = styled.main`
 
   display: grid;
   grid-template-areas:
-    "filters  filters"
-    "list  total"
-    "list  other";
+    "filters filters  filters"
+    "list list total"
+    "list list other"
+    "list list other";
   gap: 1rem;
 
   section {

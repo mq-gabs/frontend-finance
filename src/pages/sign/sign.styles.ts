@@ -9,6 +9,12 @@ export const StyledSign = styled.main<{ isregister: string }>`
   width: 100%;
   height: 100vh;
 
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.colors.dark};
+  }
+
   .sign {
     padding: 1rem;
     width: 100%;

@@ -46,6 +46,7 @@ export const Sign = () => {
   return (
     <StyledSign isregister={String(isRegister)}>
       <div className="sign up">
+        <h1>Crie sua conta</h1>
         <form>
           <Input
             name="Nome"
@@ -85,6 +86,7 @@ export const Sign = () => {
       </div>
 
       <div className="sign in">
+        <h1>Acesse sua conta</h1>
         <form>
           <Input
             name="E-mail"

@@ -4,7 +4,7 @@ import { boxShadow, showUp } from "../../assets/theme/animations";
 export const StyledCategories = styled.main`
   h1 {
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .categories-content {

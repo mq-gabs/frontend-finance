@@ -30,9 +30,9 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
 
     if (styledType === "secondary") {
       return `
-        background: ${theme.colors.light};
+        background: ${theme.colors.secondary};
         color: ${theme.colors.primary};
-        border: 3px solid ${theme.colors.light};
+        border: 3px solid ${theme.colors.secondary};
 
         &:hover {
           ${bright}
