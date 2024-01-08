@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { boxShadow, bright } from "../../assets/theme/animations";
 
+export const StyledCategorySelectWrapper = styled.div`
+  display: grid;
+  gap: 0.5rem;
+`;
+
 export const StyledCategorySelect = styled.div`
   border: 3px solid ${({ theme }) => theme.colors.grey};
   border-radius: 0.5rem;

@@ -3,6 +3,7 @@ import {
   StyledCategorySelect,
   StyledCategorySelectActions,
   StyledCategorySelectContent,
+  StyledCategorySelectWrapper,
   StyledIconsDialogWrapper,
 } from "./category-select.styles";
 import { TIcon } from "../../utils";
@@ -27,38 +28,41 @@ export const CategorySelect = ({ icon, changeIcon }: ICategorySelect) => {
   };
 
   return (
-    <StyledCategorySelect>
-      <StyledCategorySelectContent>
-        {icon ? (
-          <>
-            <p>Ícone selecionado:</p>
-            <div className="icon-wrap">
-              <Icon name={icon} size={3} />
-            </div>
-          </>
-        ) : (
-          <span>Selecione um ícone</span>
-        )}
-      </StyledCategorySelectContent>
-      <StyledCategorySelectActions>
-        <IconButton icon="search" onClick={handleOpenIconsDialog} />
-      </StyledCategorySelectActions>
-      <Dialog
-        title="Selecione o ícone da categoria"
-        open={openIconsDialog}
-        onClose={() => setOpenIconsDialog(false)}
-      >
-        <StyledIconsDialogWrapper>
-          {Object.keys(icons).map((key) => (
-            <div
-              className="icon-of-dialog"
-              onClick={() => handleChooseIcon(key as TIcon)}
-            >
-              <Icon name={key as TIcon} size={1.5} />
-            </div>
-          ))}
-        </StyledIconsDialogWrapper>
-      </Dialog>
-    </StyledCategorySelect>
+    <StyledCategorySelectWrapper>
+      <p>Ícone</p>
+      <StyledCategorySelect>
+        <StyledCategorySelectContent>
+          {icon ? (
+            <>
+              <p>Ícone selecionado:</p>
+              <div className="icon-wrap">
+                <Icon name={icon} size={3} />
+              </div>
+            </>
+          ) : (
+            <span>Selecione um ícone</span>
+          )}
+        </StyledCategorySelectContent>
+        <StyledCategorySelectActions>
+          <IconButton icon="search" onClick={handleOpenIconsDialog} />
+        </StyledCategorySelectActions>
+        <Dialog
+          title="Selecione o ícone da categoria"
+          open={openIconsDialog}
+          onClose={() => setOpenIconsDialog(false)}
+        >
+          <StyledIconsDialogWrapper>
+            {Object.keys(icons).map((key) => (
+              <div
+                className="icon-of-dialog"
+                onClick={() => handleChooseIcon(key as TIcon)}
+              >
+                <Icon name={key as TIcon} size={1.5} />
+              </div>
+            ))}
+          </StyledIconsDialogWrapper>
+        </Dialog>
+      </StyledCategorySelect>
+    </StyledCategorySelectWrapper>
   );
 };

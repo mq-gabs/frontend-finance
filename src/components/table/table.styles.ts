@@ -9,9 +9,9 @@ export const StyledTable = styled.table<{ size: number }>`
   color: ${({ theme }) => theme.colors.dark};
 
   tr {
-    display: grid;
-    grid-template-columns: repeat(${({ size }) => size}, 1fr);
-    grid-template-rows: 1fr;
+    // display: grid;
+    // grid-template-columns: repeat(${({ size }) => size}, 1fr);
+    // grid-template-rows: 1fr;
     overflow: hide;
   }
 

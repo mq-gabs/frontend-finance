@@ -21,7 +21,7 @@ export const getFlow = (flow: EFlow) => {
   return "-";
 };
 
-export const formatTotal = (value: number) => {
+export const formatMyCurrency = (value: number) => {
   return (
     "R$ " +
     value.toLocaleString("pt-br", {
@@ -48,4 +48,25 @@ export const formatStatusIcon = (
   if (status === EStatus.PAYDAY) return { name: "payday", color: "blue" };
   if (status === EStatus.PENDING) return { name: "warn", color: "yellow" };
   return { name: "cancel", color: "red" };
+};
+
+export const getCountRestDays = (date: string) => {
+  const targetDate = new Date(date);
+  const todaysDate = new Date();
+
+  const diff = targetDate.getDate() - todaysDate.getDate() + 1;
+
+  if (diff > 0) {
+    return `Faltam ${diff} dias`;
+  }
+
+  if (diff === 0) {
+    return `Hoje é o dia`;
+  }
+
+  if (diff < 0) {
+    return `${-1 * diff} dias atrasados`;
+  }
+
+  return;
 };

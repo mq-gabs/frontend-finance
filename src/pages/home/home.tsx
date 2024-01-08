@@ -1,32 +1,44 @@
-import { useEffect, useState } from "react";
-import { getAllPayments } from "../../services";
 import { StyledHome } from "./home.styles";
-import { List } from "./list/list";
-import { TPayment } from "../../utils";
+import { formatMyCurrency } from "../../utils/functions";
+import { ListMonthPayments } from "./list-month-payments/list-month-payments";
+
+const monthsNames = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Março",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
+];
 
 export const Home = () => {
-  const [pays, setPays] = useState<TPayment[]>([]);
-  const [paysTotal, setPaysTotal] = useState<number>(0);
-  const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(10);
-
-  const getPayments = async () => {
-    const payments = await getAllPayments({ page, pageSize });
-
-    setPays(payments[0]);
-    setPaysTotal(payments[1]);
-  };
-
-  useEffect(() => {
-    getPayments();
-  }, [page, pageSize]);
+  const currentMonthIndex = new Date().getMonth();
+  const currentMontName = monthsNames[currentMonthIndex];
+  const currentYear = new Date().getFullYear();
+  const balance = 123.45;
 
   return (
-    <StyledHome>
-      <section className="filters"></section>
-      <section className="list"></section>
-      <section className="total"></section>
-      <section className="other"></section>
+    <StyledHome balance_negative={balance < 0}>
+      <section className="top">
+        <h1>
+          {currentMontName} de {currentYear}
+        </h1>
+        <h1>
+          Saldo: <span>{formatMyCurrency(balance)}</span>
+        </h1>
+      </section>
+      <section className="payments-late"></section>
+      <section className="payments-month">
+        <ListMonthPayments month={currentMonthIndex} year={currentYear} />
+      </section>
+      <section className="top-categories"></section>
+      <section className="next-month"></section>
     </StyledHome>
   );
 };

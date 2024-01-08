@@ -11,6 +11,13 @@ interface ITable {
   setPage: Dispatch<SetStateAction<number>>;
 }
 
+const genIndex = () => {
+  return (Math.random() * 1e6).toLocaleString("pt-br", {
+    maximumFractionDigits: 0,
+    minimumIntegerDigits: 6,
+  });
+};
+
 export const Table = ({
   columnsNames = [],
   data = [[], []],
@@ -35,13 +42,13 @@ export const Table = ({
       <StyledTable size={columnsNames.length}>
         <tr>
           {columnsNames.map((name) => (
-            <th key={name}>{name}</th>
+            <th key={genIndex()}>{name}</th>
           ))}
         </tr>
         {data.map((row) => (
           <tr key={String(Math.random() * 1e6)}>
             {row.map((cell) => (
-              <td key={cell}>{cell}</td>
+              <td key={genIndex()}>{cell}</td>
             ))}
           </tr>
         ))}
