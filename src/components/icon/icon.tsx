@@ -1,9 +1,5 @@
 import { TColors, TIcon } from "../../utils";
 import { StyledIcon } from "./icon.styles";
-import {
-  IoIosArrowDropleftCircle,
-  IoIosArrowDroprightCircle,
-} from "react-icons/io";
 
 import { CgGym } from "react-icons/cg";
 import { FaCarSide, FaBook, FaSearch } from "react-icons/fa";
@@ -15,7 +11,12 @@ import {
 } from "react-icons/fa6";
 import { GiPayMoney, GiReceiveMoney, GiMedicines } from "react-icons/gi";
 import { ImAirplane, ImCross } from "react-icons/im";
-import { IoIosWarning, IoIosCheckmarkCircle } from "react-icons/io";
+import {
+  IoIosWarning,
+  IoIosCheckmarkCircle,
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 import { IoToday } from "react-icons/io5";
 import {
   MdDelete,

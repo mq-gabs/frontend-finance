@@ -4,6 +4,7 @@ import { boxShadow, showUp } from "../../assets/theme/animations";
 export const StyledHome = styled.main<{ balance_negative: boolean }>`
   background: ${({ theme }) => theme.colors.light};
   height: 100%;
+  color: ${({ theme }) => theme.colors.dark};
 
   display: grid;
   grid-template-areas:
@@ -24,12 +25,12 @@ export const StyledHome = styled.main<{ balance_negative: boolean }>`
     ${showUp}
   }
 
-  h1, span {
+  .top h1, .top span {
     font-weight: 600;
     font-size: 1.2rem;
   }
 
-  span {
+  .top span {
     ${({ theme, balance_negative }) =>
       balance_negative
         ? `

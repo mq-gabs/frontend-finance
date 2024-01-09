@@ -1,6 +1,7 @@
 import { StyledHome } from "./home.styles";
 import { formatMyCurrency } from "../../utils/functions";
 import { ListMonthPayments } from "./list-month-payments/list-month-payments";
+import { ListLatePayments } from "./list-late-payments/list-late-payments";
 
 const monthsNames = [
   "Janeiro",
@@ -33,7 +34,9 @@ export const Home = () => {
           Saldo: <span>{formatMyCurrency(balance)}</span>
         </h1>
       </section>
-      <section className="payments-late"></section>
+      <section className="payments-late">
+        <ListLatePayments />
+      </section>
       <section className="payments-month">
         <ListMonthPayments month={currentMonthIndex} year={currentYear} />
       </section>

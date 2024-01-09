@@ -39,22 +39,37 @@ export const formatStatus = (status: EStatus) => {
   if (status === EStatus.PENDING) return "Pendente";
   return "-";
 };
-export const formatStatusIcon = (
+export const getStatusInfo = (
   status: EStatus
-): { name: TIcon; color: TColors } => {
-  if (status === EStatus.CANCELLED) return { name: "cancel", color: "red" };
-  if (status === EStatus.LATE) return { name: "late", color: "orange" };
-  if (status === EStatus.PAID) return { name: "ok", color: "green" };
-  if (status === EStatus.PAYDAY) return { name: "payday", color: "blue" };
-  if (status === EStatus.PENDING) return { name: "warn", color: "yellow" };
-  return { name: "cancel", color: "red" };
+): { icon: TIcon; color: TColors; name: string } => {
+  const statusOptions = {
+    [`${EStatus.CANCELLED}`]: {
+      icon: "cancel",
+      color: "grey",
+      name: "Cancelado",
+    },
+    [`${EStatus.LATE}`]: { icon: "late", color: "red", name: "Atrasado" },
+    [`${EStatus.PAID}`]: { icon: "ok", color: "green", name: "Pago" },
+    [`${EStatus.PAYDAY}`]: {
+      icon: "payday",
+      color: "blue",
+      name: "Dia do pagamento",
+    },
+    [`${EStatus.PENDING}`]: { icon: "warn", color: "yellow", name: "Pendente" },
+  };
+
+  const selectedInfo = statusOptions[status];
+
+  return selectedInfo as { icon: TIcon; color: TColors; name: string };
 };
 
 export const getCountRestDays = (date: string) => {
-  const targetDate = new Date(date);
+  const [year, month, day] = date.split("-");
+
+  const targetDate = new Date(Number(year), Number(month) - 1, Number(day));
   const todaysDate = new Date();
 
-  const diff = targetDate.getDate() - todaysDate.getDate() + 1;
+  const diff = targetDate.getDate() - todaysDate.getDate();
 
   if (diff > 0) {
     return `Faltam ${diff} dias`;
@@ -65,7 +80,7 @@ export const getCountRestDays = (date: string) => {
   }
 
   if (diff < 0) {
-    return `${-1 * diff} dias atrasados`;
+    return `${-1 * diff} dias em atraso`;
   }
 
   return;

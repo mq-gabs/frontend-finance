@@ -84,6 +84,6 @@ export type TColors =
   | "lightGrey"
   | "red"
   | "green"
-  | 'yellow'
-  | 'blue'
-  | 'orange';
+  | "yellow"
+  | "blue"
+  | "orange";
