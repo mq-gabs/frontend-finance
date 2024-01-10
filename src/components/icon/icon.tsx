@@ -1,6 +1,7 @@
 import { TColors, TIcon } from "../../utils";
 import { StyledIcon } from "./icon.styles";
 
+import { BiSolidCategoryAlt } from "react-icons/bi";
 import { CgGym } from "react-icons/cg";
 import { FaCarSide, FaBook, FaSearch } from "react-icons/fa";
 import {
@@ -60,6 +61,7 @@ export const icons = {
   late: MdWatchLater,
   cancel: MdCancel,
   payday: IoToday,
+  categories: BiSolidCategoryAlt,
 };
 
 export const Icon = ({

@@ -2,6 +2,8 @@ import { StyledHome } from "./home.styles";
 import { formatMyCurrency } from "../../utils/functions";
 import { ListMonthPayments } from "./list-month-payments/list-month-payments";
 import { ListLatePayments } from "./list-late-payments/list-late-payments";
+import { CategoriesChart } from "./categories-chart/categories-chart";
+import { NextMonthPayments } from "./next-month-payments/next-month-payments";
 
 const monthsNames = [
   "Janeiro",
@@ -40,8 +42,12 @@ export const Home = () => {
       <section className="payments-month">
         <ListMonthPayments month={currentMonthIndex} year={currentYear} />
       </section>
-      <section className="top-categories"></section>
-      <section className="next-month"></section>
+      <section className="top-categories">
+        <CategoriesChart />
+      </section>
+      <section className="next-month">
+        <NextMonthPayments />
+      </section>
     </StyledHome>
   );
 };

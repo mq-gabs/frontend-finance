@@ -6,4 +6,5 @@ export default {
     lg: "1.2rem",
     xl: "1.5rem",
   },
+  fontFamily: `'DM sans', sans-serif`,
 };

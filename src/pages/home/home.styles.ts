@@ -15,6 +15,7 @@ export const StyledHome = styled.main<{ balance_negative: boolean }>`
   "payments-month payments-month payments-month next-month next-month";
   "payments-month payments-month payments-month next-month next-month";
   grid-template-rows: 80px auto auto auto auto;
+  grid-template-columns: repeat(1fr, 6);
   gap: 1rem;
 
   section {
