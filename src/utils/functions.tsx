@@ -1,4 +1,4 @@
-import { EFlow, EStatus, TColors, TIcon } from ".";
+import { EFlow, EPaymentType, EStatus, TColors, TIcon } from ".";
 import { Icon } from "../components";
 
 export const formatDate = (date: string) => {
@@ -31,6 +31,16 @@ export const formatMyCurrency = (value: number) => {
   );
 };
 
+export const formatPaymentType = (value: EPaymentType) => {
+  const paymentsTypesList = {
+    [`${EPaymentType.INSTALLMENT}`]: "Crédito",
+    [`${EPaymentType.RECURRENT}`]: "Assinatura",
+    [`${EPaymentType.UNIQUE}`]: "Débito",
+  };
+
+  return paymentsTypesList[value];
+};
+
 export const formatStatus = (status: EStatus) => {
   if (status === EStatus.CANCELLED) return "Cancelado";
   if (status === EStatus.LATE) return "Atrasado";
@@ -39,6 +49,7 @@ export const formatStatus = (status: EStatus) => {
   if (status === EStatus.PENDING) return "Pendente";
   return "-";
 };
+
 export const getStatusInfo = (
   status: EStatus
 ): { icon: TIcon; color: TColors; name: string } => {
@@ -69,9 +80,18 @@ export const getCountRestDays = (date: string) => {
   const targetDate = new Date(Number(year), Number(month) - 1, Number(day));
   const todaysDate = new Date();
 
-  const diff = targetDate.getDate() - todaysDate.getDate();
+  const rawDiff: number = targetDate.getTime() - todaysDate.getTime();
 
+  const diff = Math.ceil(rawDiff / 1000 / 60 / 60 / 24);
+
+  if (date === "2024-02-10") {
+    console.log({ targetDate, todaysDate, diff, rawDiff });
+  }
   if (diff > 0) {
+    if (diff === 1) {
+      return `Falta ${diff} dia`;
+    }
+
     return `Faltam ${diff} dias`;
   }
 
@@ -80,6 +100,10 @@ export const getCountRestDays = (date: string) => {
   }
 
   if (diff < 0) {
+    if (diff === -1) {
+      return `${-1 * diff} dia em atraso`;
+    }
+
     return `${-1 * diff} dias em atraso`;
   }
 

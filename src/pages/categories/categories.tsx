@@ -29,7 +29,11 @@ export const Categories = () => {
     getCategories();
   }, []);
 
-  const handleCreateCategory = async () => {
+  const handleCreateCategory = async (e: any) => {
+    if (!name || !icon) {
+      e.preventDefault();
+      alert("Preencha todos os campos!");
+    }
 
     const response = await saveCategory({ name, icon });
 
@@ -37,7 +41,6 @@ export const Categories = () => {
 
     setName("");
     setIcon("");
-
   };
 
   const applyEditionToCategory = async (e: any) => {
@@ -96,7 +99,9 @@ export const Categories = () => {
             <CategorySelect icon={icon} changeIcon={setIcon} />
             <Button
               text={isEditing ? `Editar ${editingName}` : "Criar categoria"}
-              onClick={isEditing ? applyEditionToCategory : handleCreateCategory}
+              onClick={
+                isEditing ? applyEditionToCategory : handleCreateCategory
+              }
             />
             <Button
               text={isEditing ? "Cancelar" : "Limpar"}

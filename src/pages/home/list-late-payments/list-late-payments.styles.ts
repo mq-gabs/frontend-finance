@@ -20,3 +20,11 @@ export const StyledListLatePayments = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
+
+export const StyledNoContent = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

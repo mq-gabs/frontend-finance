@@ -43,6 +43,7 @@ export type TCategory = {
   created_at: string;
   updated_at: string;
   user_id: string;
+  payments_count?: number;
 };
 
 export type TIcon =

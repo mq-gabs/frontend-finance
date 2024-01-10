@@ -9,3 +9,11 @@ export const StyledList = styled.div`
     gap: 0.5rem;
   }
 `;
+
+export const StyledNoContent = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

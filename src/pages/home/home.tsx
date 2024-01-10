@@ -20,9 +20,17 @@ const monthsNames = [
   "Dezembro",
 ];
 
+const getMonthName = (index: number) => {
+  if (index >= 12) {
+    index -= 12;
+  }
+
+  return monthsNames[index];
+};
+
 export const Home = () => {
   const currentMonthIndex = new Date().getMonth();
-  const currentMontName = monthsNames[currentMonthIndex];
+  const currentMontName = getMonthName(currentMonthIndex);
   const currentYear = new Date().getFullYear();
   const balance = 123.45;
 
@@ -43,10 +51,18 @@ export const Home = () => {
         <ListMonthPayments month={currentMonthIndex} year={currentYear} />
       </section>
       <section className="top-categories">
-        <CategoriesChart />
+        <CategoriesChart
+          currentMonth={currentMonthIndex}
+          currentYear={currentYear}
+          currentMonthName={getMonthName(currentMonthIndex)}
+        />
       </section>
       <section className="next-month">
-        <NextMonthPayments />
+        <NextMonthPayments
+          nextMonth={currentMonthIndex + 1}
+          nextMonthName={getMonthName(currentMonthIndex + 1)}
+          currentYear={currentYear}
+        />
       </section>
     </StyledHome>
   );

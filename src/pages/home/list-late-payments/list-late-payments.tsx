@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { getAllPayments } from "../../../services";
-import { StyledListLatePayments } from "./list-late-payments.styles";
+import {
+  StyledListLatePayments,
+  StyledNoContent,
+} from "./list-late-payments.styles";
 import { EStatus, TPayment } from "../../../utils";
 import {
   formatMyCurrency,
@@ -73,12 +76,15 @@ export const ListLatePayments = () => {
           columnsNames={columnsNames}
           data={latePays}
           total={paysCount}
+          hidePagination
         />
       )}
       {latePays.length === 0 && (
-        <p>
-          Nenhum pagamento está atrasado. <span>Parabéns!</span>
-        </p>
+        <StyledNoContent>
+          <p>
+            Nenhum pagamento está atrasado. <span>Parabéns!</span>
+          </p>
+        </StyledNoContent>
       )}
     </StyledListLatePayments>
   );

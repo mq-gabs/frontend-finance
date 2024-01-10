@@ -10,3 +10,10 @@ export const StyledCategoriesCharts = styled.div`
     margin-bottom: 1rem;
   }
 `;
+
+export const StyledNoContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
