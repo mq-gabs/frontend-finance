@@ -5,6 +5,7 @@ import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../hooks";
 import { MdSpaceDashboard } from "react-icons/md";
+import { GiPayMoney } from "react-icons/gi";
 
 export const Menu = () => {
   const { logOut } = useAuth();
@@ -19,7 +20,12 @@ export const Menu = () => {
         </li>
         <li>
           <Link to="/pagamentos/novo">
-            <FaCirclePlus /> Novo 
+            <FaCirclePlus /> Novo
+          </Link>
+        </li>
+        <li>
+          <Link to="/pagamentos">
+            <GiPayMoney /> Pagamentos
           </Link>
         </li>
         <li>
