@@ -20,7 +20,7 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
   const [paysTotal, setPaysTotal] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
-  const [pays, setPays] = useState<any[][]>([[]]);
+  const [pays, setPays] = useState<any[][]>([]);
 
   const getPayments = async () => {
     const payments = await getAllPayments({
@@ -58,6 +58,8 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
   useEffect(() => {
     getPayments();
   }, [page, pageSize]);
+
+  console.log({ pays });
 
   return (
     <StyledList>

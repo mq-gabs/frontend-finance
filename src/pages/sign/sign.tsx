@@ -3,6 +3,7 @@ import { StyledSign } from "./sign.styles";
 import { Input, Button } from "../../components";
 import { signIn } from "../../services";
 import { useAuth } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 export const Sign = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -11,6 +12,8 @@ export const Sign = () => {
   const [password, setPassword] = useState<string>("");
   const [samePassword, setSamePassword] = useState<string>("");
   const { saveUserData } = useAuth();
+
+  const navigate = useNavigate();
 
   const goToCreateAccount = (e: any) => {
     e.preventDefault();
@@ -37,6 +40,7 @@ export const Sign = () => {
     });
 
     saveUserData(response);
+    navigate(0);
   };
 
   const createAccount = (e: any) => {

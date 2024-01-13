@@ -1,4 +1,4 @@
-import { createContext, useState, FC, ReactNode, useContext } from "react";
+import { createContext, useState, ReactNode, useContext } from "react";
 
 enum EProfile {
   ADMIN = "admin",

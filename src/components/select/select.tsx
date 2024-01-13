@@ -15,7 +15,7 @@ export const Select = ({
 }: TSelect) => {
   const handleChange = (e: any) => {
     const realValue =
-      items.find((item) => item.name === e.target.value)?.value || "-";
+      items.find((item) => item.name === e.target.value)?.value || "";
     onChange(realValue);
   };
 

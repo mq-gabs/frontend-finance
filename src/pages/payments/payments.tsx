@@ -2,13 +2,23 @@ import { useEffect, useState } from "react";
 import { Actions, CategoryCell, StatusCell, Table } from "../../components";
 import { StyledNoContent, StyledPayments } from "./payments.styles";
 import { getAllPayments } from "../../services";
-import { EPaymentType, EStatus, TPayment } from "../../utils";
+import { EFlow, EPaymentType, EStatus, TPayment } from "../../utils";
 import {
   formatDate,
   formatMyCurrency,
   formatPaymentType,
   getFlow,
 } from "../../utils/functions";
+import { PaymentsFilter } from "./payments-filter/payments-filter";
+
+export type TFilterData = {
+  title: string;
+  status: EStatus;
+  paymentType: EPaymentType;
+  flow: EFlow;
+  startPayAt: string;
+  endPayAt: string;
+};
 
 export const Payments = () => {
   const [page, setPage] = useState<number>(0);
@@ -16,10 +26,13 @@ export const Payments = () => {
   const [pays, setPays] = useState<any[][]>([]);
   const [paysCount, setPaysCount] = useState<number>(0);
 
+  const [filterData, setFilterData] = useState<TFilterData>({} as TFilterData);
+
   const getPayments = async () => {
     const response = await getAllPayments({
       page,
       pageSize,
+      ...filterData,
     });
 
     if (!response) return;
@@ -51,7 +64,7 @@ export const Payments = () => {
 
   useEffect(() => {
     getPayments();
-  }, [page, pageSize]);
+  }, [page, pageSize, filterData]);
 
   const columnsNames = [
     "Título",
@@ -68,6 +81,7 @@ export const Payments = () => {
   return (
     <StyledPayments>
       <h1>Pagamentos</h1>
+      <PaymentsFilter data={filterData} setData={setFilterData} />
       {pays.length !== 0 && (
         <Table
           page={page}
