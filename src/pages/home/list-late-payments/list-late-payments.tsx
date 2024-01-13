@@ -11,15 +11,13 @@ import {
   getFlow,
   getStatusInfo,
 } from "../../../utils/functions";
-import { CategoryCell, Icon, Table } from "../../../components";
+import { Actions, CategoryCell, Icon, Table } from "../../../components";
 
 export const ListLatePayments = () => {
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
   const [latePays, setLatePays] = useState<any[][]>([]);
   const [paysCount, setPaysCount] = useState<number>(0);
-
-  const Actions = () => <>actions</>;
 
   const getLatePayments = async () => {
     const response = await getAllPayments({
@@ -38,7 +36,7 @@ export const ListLatePayments = () => {
       <CategoryCell name={pay.category_name} icon={pay.category_icon} />,
       getFlow(pay.flow),
       formatMyCurrency(pay.value),
-      <Actions />,
+      <Actions id={pay.id} needToPay={pay.status !== EStatus.PAID} />,
     ]);
 
     setLatePays(formatedPays);

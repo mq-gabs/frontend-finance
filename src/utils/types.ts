@@ -75,7 +75,8 @@ export type TIcon =
   | "late"
   | "cancel"
   | "payday"
-  | "categories";
+  | "categories"
+  | "pay";
 
 export type TColors =
   | "primary"

@@ -21,7 +21,6 @@ export const Categories = () => {
   const getCategories = async () => {
     const response = await getAllCategories({ pageSize: 100 });
 
-    console.log({ response });
     setCategories(response[0]);
   };
 

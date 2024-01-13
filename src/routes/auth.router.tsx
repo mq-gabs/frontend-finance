@@ -24,6 +24,7 @@ export const AuthRouter = () => {
           <Route path="/categorias" Component={Categories} />
           <Route path="/pagamentos" Component={Payments} />
           <Route path="/pagamentos/novo" Component={NewPayments} />
+          <Route path="/pagamentos/editar/:id" Component={() => <></>} />
           <Route path="*" Component={Home} />
         </Routes>
       </div>

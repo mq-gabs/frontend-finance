@@ -9,6 +9,7 @@ import {
   FaUserDoctor,
   FaCircleArrowUp,
   FaCircleArrowDown,
+  FaMoneyBill1Wave,
 } from "react-icons/fa6";
 import { GiPayMoney, GiReceiveMoney, GiMedicines } from "react-icons/gi";
 import { ImAirplane, ImCross } from "react-icons/im";
@@ -62,6 +63,7 @@ export const icons = {
   cancel: MdCancel,
   payday: IoToday,
   categories: BiSolidCategoryAlt,
+  pay: FaMoneyBill1Wave,
 };
 
 export const Icon = ({

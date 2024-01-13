@@ -8,3 +8,5 @@ export * from "./icon";
 export * from "./dialog";
 export * from "./category-cell";
 export * from "./status-cell";
+export * from "./actions";
+export * from "./confirmation-dialog";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CategoryCell, Icon, Table } from "../../../components";
+import { Actions, CategoryCell, Icon, Table } from "../../../components";
 import { StyledList, StyledNoContent } from "./list-month-payments.styles";
 
 import { EStatus, TPayment } from "../../../utils";
@@ -39,7 +39,7 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
       <CategoryCell name={pay.category_name} icon={pay.category_icon} />,
       getFlow(pay.flow),
       formatMyCurrency(pay.value),
-      <Actions />,
+      <Actions id={pay.id} needToPay={pay.status !== EStatus.PAID} />,
     ]);
 
     setPays(formatedPays);
@@ -54,8 +54,6 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
     "Valor",
     "Ações",
   ];
-
-  const Actions = () => <>act</>;
 
   useEffect(() => {
     getPayments();

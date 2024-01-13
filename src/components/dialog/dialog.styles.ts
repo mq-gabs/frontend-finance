@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { boxShadow } from "../../assets/theme/animations";
+import text from "../../assets/theme/text";
 
 export const StyledDialogWrapper = styled.div`
   position: fixed;
@@ -9,6 +10,7 @@ export const StyledDialogWrapper = styled.div`
   bottom: 0;
   display: grid;
   place-items: center;
+  z-index: 100;
 `;
 
 export const StyledDialogBG = styled.div`
@@ -23,12 +25,11 @@ export const StyledDialogBG = styled.div`
 
 export const StyledDialogWindow = styled.div`
   width: 500px;
-  height: 500px;
   z-index: 10;
   ${boxShadow}
   border-radius: .5rem;
   display: grid;
-  grid-template-rows: 80px auto;
+  grid-template-rows: 60px auto;
   margin: 1rem;
 `;
 
@@ -41,9 +42,9 @@ export const StyledDialogTop = styled.div`
   border-radius: 0.5rem 0.5rem 0 0;
 
   p {
-    color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.light} !important;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: ${text.fontSize.lg} !important;
   }
 `;
 

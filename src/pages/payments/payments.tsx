@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { CategoryCell, StatusCell, Table } from "../../components";
+import { Actions, CategoryCell, StatusCell, Table } from "../../components";
 import { StyledNoContent, StyledPayments } from "./payments.styles";
 import { getAllPayments } from "../../services";
-import { EPaymentType, TPayment } from "../../utils";
+import { EPaymentType, EStatus, TPayment } from "../../utils";
 import {
   formatDate,
   formatMyCurrency,
@@ -42,7 +42,7 @@ export const Payments = () => {
         : "-",
       formatMyCurrency(payment.value),
       <StatusCell status={payment.status} />,
-      () => <></>,
+      <Actions needToPay={payment.status !== EStatus.PAID} id={payment.id} />,
     ]);
 
     setPays(formatedPayments);

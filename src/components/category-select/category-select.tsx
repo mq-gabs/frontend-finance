@@ -54,6 +54,7 @@ export const CategorySelect = ({ icon, changeIcon }: ICategorySelect) => {
           <StyledIconsDialogWrapper>
             {Object.keys(icons).map((key) => (
               <div
+                key={key}
                 className="icon-of-dialog"
                 onClick={() => handleChooseIcon(key as TIcon)}
               >

@@ -5,12 +5,12 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'DM sans', sans-serif;
-    font-size: 16px;
+    font-family: Nunito, sans-serif;
+    font-size: 14px;
     user-select: none;
 
     @media (max-width: 600px) {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 

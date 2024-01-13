@@ -32,6 +32,7 @@ export const StyledCategories = styled.main`
     color: ${({ theme }) => theme.colors.dark};
     font-weight: 700;
     text-transform: uppercase;
+    text-align: center;
   }
 
   .category-actions {

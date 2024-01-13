@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { StyledMenu } from "./menu.styles";
-import { FaCirclePlus } from "react-icons/fa6";
+import { FaCirclePlus, FaMoneyBill1Wave } from "react-icons/fa6";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../hooks";
 import { MdSpaceDashboard } from "react-icons/md";
-import { GiPayMoney } from "react-icons/gi";
 
 export const Menu = () => {
   const { logOut } = useAuth();
@@ -25,7 +24,7 @@ export const Menu = () => {
         </li>
         <li>
           <Link to="/pagamentos">
-            <GiPayMoney /> Pagamentos
+            <FaMoneyBill1Wave /> Pagamentos
           </Link>
         </li>
         <li>
