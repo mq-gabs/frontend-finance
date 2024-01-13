@@ -55,7 +55,11 @@ export const Payments = () => {
         : "-",
       formatMyCurrency(payment.value),
       <StatusCell status={payment.status} />,
-      <Actions needToPay={payment.status !== EStatus.PAID} id={payment.id} />,
+      <Actions
+        needToPay={payment.status !== EStatus.PAID}
+        id={payment.id}
+        onReload={getPayments}
+      />,
     ]);
 
     setPays(formatedPayments);

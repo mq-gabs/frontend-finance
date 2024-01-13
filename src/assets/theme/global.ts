@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import light from "./light";
 
 export default createGlobalStyle`
   * {
@@ -17,6 +18,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    background: ${light.colors.light};
   }
 
   a {

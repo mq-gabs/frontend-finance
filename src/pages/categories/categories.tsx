@@ -29,8 +29,9 @@ export const Categories = () => {
   }, []);
 
   const handleCreateCategory = async (e: any) => {
+    e.preventDefault();
+
     if (!name || !icon) {
-      e.preventDefault();
       alert("Preencha todos os campos!");
     }
 
@@ -40,6 +41,7 @@ export const Categories = () => {
 
     setName("");
     setIcon("");
+    getCategories();
   };
 
   const applyEditionToCategory = async (e: any) => {

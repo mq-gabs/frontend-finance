@@ -6,7 +6,8 @@ export const StyledSign = styled.main<{ isregister: string }>`
   justify-content: center;
   align-items: center;
   background: ${({ theme }) => theme.colors.light};
-  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
   height: 100vh;
 
   h1 {

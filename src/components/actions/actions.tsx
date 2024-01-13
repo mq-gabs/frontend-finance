@@ -8,9 +8,10 @@ import { useState } from "react";
 interface IActions {
   needToPay?: boolean;
   id: string;
+  onReload: () => void;
 }
 
-export const Actions = ({ needToPay = true, id }: IActions) => {
+export const Actions = ({ needToPay = true, id, onReload }: IActions) => {
   const [openPayDialog, setOpenPayDialog] = useState<boolean>(false);
   const [openDeleteDilaog, setOpenDeleteDialog] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export const Actions = ({ needToPay = true, id }: IActions) => {
     });
 
     setOpenPayDialog(false);
-    navigate(0);
+    onReload();
   };
 
   const handleClickEdit = () => {

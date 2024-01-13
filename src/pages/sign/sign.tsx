@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyledSign } from "./sign.styles";
-import { Input, Button } from "../../components";
+import { Input, Button, LogoAndName } from "../../components";
 import { signIn } from "../../services";
 import { useAuth } from "../../hooks";
 import { useNavigate } from "react-router-dom";
@@ -50,6 +50,7 @@ export const Sign = () => {
   return (
     <StyledSign isregister={String(isRegister)}>
       <div className="sign up">
+        <LogoAndName />
         <h1>Crie sua conta</h1>
         <form>
           <Input
@@ -90,6 +91,7 @@ export const Sign = () => {
       </div>
 
       <div className="sign in">
+        <LogoAndName />
         <h1>Acesse sua conta</h1>
         <form>
           <Input

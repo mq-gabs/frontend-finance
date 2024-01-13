@@ -10,3 +10,4 @@ export * from "./category-cell";
 export * from "./status-cell";
 export * from "./actions";
 export * from "./confirmation-dialog";
+export * from "./logo-and-name";

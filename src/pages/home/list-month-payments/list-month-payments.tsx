@@ -39,7 +39,11 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
       <CategoryCell name={pay.category_name} icon={pay.category_icon} />,
       getFlow(pay.flow),
       formatMyCurrency(pay.value),
-      <Actions id={pay.id} needToPay={pay.status !== EStatus.PAID} />,
+      <Actions
+        id={pay.id}
+        needToPay={pay.status !== EStatus.PAID}
+        onReload={getPayments}
+      />,
     ]);
 
     setPays(formatedPays);
