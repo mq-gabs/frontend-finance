@@ -44,9 +44,9 @@ export const PaymentsFilter = ({ data, setData }: IPaymentsFilter) => {
         />
         <Select
           items={[
-            { id: "1", name: "Débito", value: EPaymentType.UNIQUE },
-            { id: "2", name: "Crédito", value: EPaymentType.INSTALLMENT },
-            { id: "3", name: "Assinatura", value: EPaymentType.RECURRENT },
+            { id: "1", name: "Único", value: EPaymentType.UNIQUE },
+            { id: "2", name: "Parcelado", value: EPaymentType.INSTALLMENT },
+            { id: "3", name: "Recorrente", value: EPaymentType.RECURRENT },
           ]}
           name="Tipo de pagamento"
           onChange={(value) => handleUpdateFilterData(value, "paymentType")}

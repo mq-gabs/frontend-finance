@@ -4,6 +4,8 @@ import { ListMonthPayments } from "./list-month-payments/list-month-payments";
 import { ListLatePayments } from "./list-late-payments/list-late-payments";
 import { CategoriesChart } from "./categories-chart/categories-chart";
 import { NextMonthPayments } from "./next-month-payments/next-month-payments";
+import { getPaymentsBalance } from "../../services";
+import { useEffect, useState } from "react";
 
 const monthsNames = [
   "Janeiro",
@@ -32,7 +34,26 @@ export const Home = () => {
   const currentMonthIndex = new Date().getMonth();
   const currentMontName = getMonthName(currentMonthIndex);
   const currentYear = new Date().getFullYear();
-  const balance = 123.45;
+  const [balance, setBalance] = useState<number>(0);
+
+  const getBalance = async () => {
+    const response = await getPaymentsBalance({
+      dateRef: `${currentYear}/${(currentMonthIndex + 1).toLocaleString(
+        "pt-br",
+        {
+          minimumIntegerDigits: 2,
+        }
+      )}/01`,
+    });
+
+    if (!response) return;
+
+    setBalance(response.balance);
+  };
+
+  useEffect(() => {
+    getBalance();
+  }, []);
 
   return (
     <StyledHome balance_negative={balance < 0}>

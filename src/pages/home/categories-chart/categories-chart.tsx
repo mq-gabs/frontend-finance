@@ -6,7 +6,7 @@ import {
 import Chart from "react-apexcharts";
 import { getChartOptions } from "./utils";
 import { useEffect, useState } from "react";
-import { TCategory } from "../../../utils";
+import { EFlow, EStatus, TCategory } from "../../../utils";
 import { getTopCategories } from "../../../services";
 
 interface ICategoriesChart {
@@ -29,6 +29,8 @@ export const CategoriesChart = ({
     const categories = await getTopCategories({
       startDate: new Date(currentYear, currentMonth, 1).toJSON().slice(0, 10),
       endDate: new Date(currentYear, currentMonth + 1, 0).toJSON().slice(0, 10),
+      flow: EFlow.OUT,
+      status: EStatus.PAID,
     });
 
     if (!categories) return;

@@ -11,7 +11,12 @@ import {
   FaCircleArrowDown,
   FaMoneyBill1Wave,
 } from "react-icons/fa6";
-import { GiPayMoney, GiReceiveMoney, GiMedicines } from "react-icons/gi";
+import {
+  GiPayMoney,
+  GiReceiveMoney,
+  GiMedicines,
+  GiClothes,
+} from "react-icons/gi";
 import { ImAirplane, ImCross } from "react-icons/im";
 import {
   IoIosWarning,
@@ -64,6 +69,7 @@ export const icons = {
   payday: IoToday,
   categories: BiSolidCategoryAlt,
   pay: FaMoneyBill1Wave,
+  clothe: GiClothes,
 };
 
 export const Icon = ({

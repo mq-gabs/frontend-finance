@@ -19,7 +19,7 @@ interface IListMonthPayments {
 export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
   const [paysTotal, setPaysTotal] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(10);
+  const [pageSize, setPageSize] = useState<number>(5);
   const [pays, setPays] = useState<any[][]>([]);
 
   const getPayments = async () => {

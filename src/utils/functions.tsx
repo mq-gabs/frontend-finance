@@ -33,9 +33,9 @@ export const formatMyCurrency = (value: number) => {
 
 export const formatPaymentType = (value: EPaymentType) => {
   const paymentsTypesList = {
-    [`${EPaymentType.INSTALLMENT}`]: "Crédito",
-    [`${EPaymentType.RECURRENT}`]: "Assinatura",
-    [`${EPaymentType.UNIQUE}`]: "Débito",
+    [`${EPaymentType.INSTALLMENT}`]: "Parcelado",
+    [`${EPaymentType.RECURRENT}`]: "Recorrente",
+    [`${EPaymentType.UNIQUE}`]: "Único",
   };
 
   return paymentsTypesList[value];

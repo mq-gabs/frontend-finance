@@ -79,7 +79,7 @@ export const Actions = ({ needToPay = true, id, onReload }: IActions) => {
         onConfirm={handleDelete}
         open={openDeleteDilaog}
         title="Confirmar exclusão?"
-        text="Ao confirmar essa ação o pagamento será excluído definidamente."
+        text="Ao confirmar essa ação o pagamento será excluído definitivamente."
       />
     </StyledActions>
   );

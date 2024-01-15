@@ -85,23 +85,25 @@ export const Payments = () => {
   return (
     <StyledPayments>
       <h1>Pagamentos</h1>
-      <PaymentsFilter data={filterData} setData={setFilterData} />
-      {pays.length !== 0 && (
-        <Table
-          page={page}
-          pageSize={pageSize}
-          columnsNames={columnsNames}
-          data={pays}
-          total={paysCount}
-          setPage={setPage}
-          setPageSize={setPageSize}
-        />
-      )}
-      {pays.length === 0 && (
-        <StyledNoContent>
-          <p>Nenhum dado para exibir</p>
-        </StyledNoContent>
-      )}
+      <div className="payments-content">
+        <PaymentsFilter data={filterData} setData={setFilterData} />
+        {pays.length !== 0 && (
+          <Table
+            page={page}
+            pageSize={pageSize}
+            columnsNames={columnsNames}
+            data={pays}
+            total={paysCount}
+            setPage={setPage}
+            setPageSize={setPageSize}
+          />
+        )}
+        {pays.length === 0 && (
+          <StyledNoContent>
+            <p>Nenhum dado para exibir</p>
+          </StyledNoContent>
+        )}
+      </div>
     </StyledPayments>
   );
 };

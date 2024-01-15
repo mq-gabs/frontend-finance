@@ -15,7 +15,7 @@ import { Actions, CategoryCell, Icon, Table } from "../../../components";
 
 export const ListLatePayments = () => {
   const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(10);
+  const [pageSize, setPageSize] = useState<number>(5);
   const [latePays, setLatePays] = useState<any[][]>([]);
   const [paysCount, setPaysCount] = useState<number>(0);
 

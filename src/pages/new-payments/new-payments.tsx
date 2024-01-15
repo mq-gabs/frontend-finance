@@ -95,9 +95,9 @@ export const NewPayments = () => {
         <Select
           name="Tipo de pagamento"
           items={[
-            { id: 0, name: "Débito", value: "UNIQUE" },
-            { id: 1, name: "Crédito", value: "INSTALLMENT" },
-            { id: 2, name: "Assinatura", value: "RECURRENT" },
+            { id: 0, name: "Único", value: "UNIQUE" },
+            { id: 1, name: "Parcelado", value: "INSTALLMENT" },
+            { id: 2, name: "Recorrente", value: "RECURRENT" },
           ]}
           selected={formData.payment_type}
           onChange={(value) => onChangeFormData(value, "payment_type")}
