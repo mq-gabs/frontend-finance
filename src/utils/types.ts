@@ -46,6 +46,14 @@ export type TCategory = {
   payments_count?: number;
 };
 
+export type TPaymentsGroup = {
+  id: string;
+  name: string;
+  payments_count?: number;
+  created_at: string;
+  updated_at: string;
+};
+
 export type TIcon =
   | "edit"
   | "delete"
@@ -77,7 +85,9 @@ export type TIcon =
   | "payday"
   | "categories"
   | "pay"
-  | "clothe";
+  | "clothe"
+  | "none"
+  | "group";
 
 export type TColors =
   | "primary"

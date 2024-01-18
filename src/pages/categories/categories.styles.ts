@@ -9,8 +9,8 @@ export const StyledCategories = styled.main`
 
   .categories-content {
     display: grid;
-    grid-template-columns: 30% 70%;
-    gap: 1rem;
+    grid-template-columns: calc(30% - 1rem) calc(70% - 1rem);
+    gap: 2rem;
     ${showUp}
   }
 

@@ -10,6 +10,7 @@ import {
   FaCircleArrowUp,
   FaCircleArrowDown,
   FaMoneyBill1Wave,
+  FaRegObjectGroup,
 } from "react-icons/fa6";
 import {
   GiPayMoney,
@@ -34,6 +35,7 @@ import {
   MdDevicesOther,
   MdWatchLater,
   MdCancel,
+  MdQuestionMark,
 } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { TbPigMoney } from "react-icons/tb";
@@ -70,6 +72,8 @@ export const icons = {
   categories: BiSolidCategoryAlt,
   pay: FaMoneyBill1Wave,
   clothe: GiClothes,
+  none: MdQuestionMark,
+  group: FaRegObjectGroup,
 };
 
 export const Icon = ({
@@ -81,7 +85,7 @@ export const Icon = ({
   size?: number;
   color?: TColors;
 }) => {
-  const RenderIcon = icons[name];
+  const RenderIcon = icons[name] || icons["none"];
 
   return (
     <StyledIcon size={size} color={color}>

@@ -1,5 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import { Categories, Home, NewPayments, Payments } from "../pages";
+import {
+  Categories,
+  Home,
+  NewPayments,
+  Payments,
+  PaymentsGroups,
+} from "../pages";
 import { Menu } from "../components";
 import light from "../assets/theme/light";
 
@@ -25,6 +31,8 @@ export const AuthRouter = () => {
           <Route path="/pagamentos" Component={Payments} />
           <Route path="/pagamentos/novo" Component={NewPayments} />
           <Route path="/pagamentos/editar/:id" Component={() => <></>} />
+          <Route path="/grupos" Component={PaymentsGroups} />
+          <Route path="/grupos/editar/:id" Component={() => <></>} />
           <Route path="*" Component={Home} />
         </Routes>
       </div>

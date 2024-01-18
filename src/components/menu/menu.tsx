@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { StyledMenu } from "./menu.styles";
-import { FaCirclePlus, FaMoneyBill1Wave } from "react-icons/fa6";
+import {
+  FaCirclePlus,
+  FaMoneyBill1Wave,
+  FaRegObjectGroup,
+} from "react-icons/fa6";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../hooks";
@@ -25,6 +29,11 @@ export const Menu = () => {
         <li>
           <Link to="/pagamentos">
             <FaMoneyBill1Wave /> Pagamentos
+          </Link>
+        </li>
+        <li>
+          <Link to="/grupos">
+            <FaRegObjectGroup /> Grupos
           </Link>
         </li>
         <li>
