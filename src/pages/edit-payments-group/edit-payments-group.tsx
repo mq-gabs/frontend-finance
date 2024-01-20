@@ -17,9 +17,13 @@ import {
   StyledTopOptions,
 } from "./edit-payments-group.styles";
 import { TPayment } from "../../utils";
-import { getAllPayments, getPaymentsOfGroup } from "../../services";
+import {
+  getAllPayments,
+  getPaymentsOfGroup,
+  updatePaymetsGroup,
+} from "../../services";
 import { formatPaymentType, getFlow } from "../../utils/functions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const EditPaymentsGroup = () => {
   const [page, setPage] = useState<number>(0);
@@ -31,6 +35,7 @@ export const EditPaymentsGroup = () => {
   >([]);
   const [groupName, setGroupName] = useState<string>("");
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const columnsNames = ["Título", "Fluxo", "Tipo", "Adicionar"];
   const groupPaymentsColumnsNames = ["Título", "Fluxo", "Tipo", "Remover"];
@@ -53,8 +58,6 @@ export const EditPaymentsGroup = () => {
 
     setPaymentsOfPaymentsGroup(newPaymentsOfPaymentsGroup);
   };
-
-  console.log({ allPaymentsList, paymentsOfPaymentsGroup });
 
   const isPaymentAdded = (payment: TPayment): boolean => {
     return paymentsOfPaymentsGroup.some(
@@ -106,7 +109,11 @@ export const EditPaymentsGroup = () => {
   };
 
   const getGroupPayments = async () => {
-    if (!id) return;
+    if (!id) {
+      navigate("/grupos");
+      return;
+    }
+
     const response = await getPaymentsOfGroup({ id });
 
     if (!response) return;
@@ -147,7 +154,21 @@ export const EditPaymentsGroup = () => {
     getPaymentsList();
   }, [page, pageSize]);
 
-  const handleSaveGroup = async () => {};
+  const handleSaveGroup = async () => {
+    if (!id) return;
+
+    const paymentsIds = paymentsOfPaymentsGroup.map((_payment) => _payment.id);
+
+    const response = await updatePaymetsGroup({
+      id,
+      name: groupName,
+      paymentsIds,
+    });
+
+    if (!response) return;
+
+    navigate("/grupos");
+  };
 
   return (
     <StyledEditPaymentsGroup>
