@@ -3,7 +3,13 @@ import { StyledIcon } from "./icon.styles";
 
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { CgGym } from "react-icons/cg";
-import { FaCarSide, FaBook, FaSearch } from "react-icons/fa";
+import {
+  FaCarSide,
+  FaBook,
+  FaSearch,
+  FaArrowAltCircleRight,
+  FaArrowAltCircleLeft,
+} from "react-icons/fa";
 import {
   FaMasksTheater,
   FaUserDoctor,
@@ -74,6 +80,8 @@ export const icons = {
   clothe: GiClothes,
   none: MdQuestionMark,
   group: FaRegObjectGroup,
+  throwLeft: FaArrowAltCircleLeft,
+  throwRight: FaArrowAltCircleRight,
 };
 
 export const Icon = ({

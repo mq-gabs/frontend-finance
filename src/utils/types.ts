@@ -87,7 +87,9 @@ export type TIcon =
   | "pay"
   | "clothe"
   | "none"
-  | "group";
+  | "group"
+  | "throwLeft"
+  | "throwRight";
 
 export type TColors =
   | "primary"

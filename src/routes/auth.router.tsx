@@ -8,6 +8,7 @@ import {
 } from "../pages";
 import { Menu } from "../components";
 import light from "../assets/theme/light";
+import { EditPaymentsGroup } from "../pages/edit-payments-group/edit-payments-group";
 
 export const AuthRouter = () => {
   return (
@@ -32,7 +33,7 @@ export const AuthRouter = () => {
           <Route path="/pagamentos/novo" Component={NewPayments} />
           <Route path="/pagamentos/editar/:id" Component={() => <></>} />
           <Route path="/grupos" Component={PaymentsGroups} />
-          <Route path="/grupos/editar/:id" Component={() => <></>} />
+          <Route path="/grupos/editar/:id" Component={EditPaymentsGroup} />
           <Route path="*" Component={Home} />
         </Routes>
       </div>
