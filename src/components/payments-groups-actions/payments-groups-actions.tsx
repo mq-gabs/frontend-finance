@@ -32,10 +32,19 @@ export const PaymentsGroupsActions = ({
     onReload();
   };
 
+  const handleClickToViewPaymentsGroup = () => {
+    navigate(`/grupos/${id}`);
+  };
+
   return (
     <StyledPaymentsGroupsActions>
       <IconButton onClick={handleGoToEdit} icon="edit" size={0.8} />
       <IconButton onClick={handleClickToDelete} icon="delete" size={0.8} />
+      <IconButton
+        onClick={handleClickToViewPaymentsGroup}
+        icon="eye"
+        size={0.8}
+      />
       <ConfirmationDialog
         open={openConfirmToDeletePaymentsGroup}
         onConfirm={handleDeletePaymentGroup}

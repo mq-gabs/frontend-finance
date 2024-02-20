@@ -4,9 +4,17 @@ import {
   StyledFiltersWrapper,
   StyledPaymentsFilter,
 } from "./payments-filter.styles";
-import { TFilterData } from "..";
 
 import { debounce } from "lodash";
+
+export type TFilterData = {
+  title: string;
+  status: EStatus;
+  paymentType: EPaymentType;
+  flow: EFlow; 
+  startPayAt: string;
+  endPayAt: string;
+};
 
 interface IPaymentsFilter {
   data: TFilterData;

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { StyledPagination, StyledTable } from "./table.styles";
 import { IconButton } from "..";
 
@@ -30,6 +30,12 @@ export const Table = ({
   total = 0,
   hidePagination = false,
 }: ITable) => {
+  const [dataToRender, setDataToRender] = useState<any[][]>([[]]);
+
+  useEffect(() => {
+    setDataToRender(data);
+  }, [data])
+
   const onNextPage = () => {
     if (pageSize * (page + 1) >= total) return;
     setPage((prev) => prev + 1);
@@ -48,7 +54,7 @@ export const Table = ({
             <th key={genIndex()}>{name}</th>
           ))}
         </tr>
-        {data.map((row) => (
+        {dataToRender.map((row) => (
           <tr key={String(Math.random() * 1e6)}>
             {row.map((cell) => (
               <td key={genIndex()}>{cell}</td>

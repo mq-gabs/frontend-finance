@@ -2,23 +2,14 @@ import { useEffect, useState } from "react";
 import { Actions, CategoryCell, StatusCell, Table } from "../../components";
 import { StyledNoContent, StyledPayments } from "./payments.styles";
 import { getAllPayments } from "../../services";
-import { EFlow, EPaymentType, EStatus, TPayment } from "../../utils";
+import { EPaymentType, EStatus, TPayment } from "../../utils";
 import {
   formatDate,
   formatMyCurrency,
   formatPaymentType,
   getFlow,
 } from "../../utils/functions";
-import { PaymentsFilter } from "./payments-filter/payments-filter";
-
-export type TFilterData = {
-  title: string;
-  status: EStatus;
-  paymentType: EPaymentType;
-  flow: EFlow;
-  startPayAt: string;
-  endPayAt: string;
-};
+import { PaymentsFilter, TFilterData } from "./payments-filter/payments-filter";
 
 export const Payments = () => {
   const [page, setPage] = useState<number>(0);

@@ -89,7 +89,8 @@ export type TIcon =
   | "none"
   | "group"
   | "throwLeft"
-  | "throwRight";
+  | "throwRight"
+  | "eye";
 
 export type TColors =
   | "primary"

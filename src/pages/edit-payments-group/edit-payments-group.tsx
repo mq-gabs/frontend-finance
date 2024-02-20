@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   Button,
-  CategoryCell,
   Icon,
   IconButton,
   Input,
@@ -95,10 +94,6 @@ export const EditPaymentsGroup = () => {
 
     const formatedPayments = payments.map((payment: TPayment) => [
       payment.title,
-      // <CategoryCell
-      //   icon={payment.category_icon}
-      //   name={payment.category_name}
-      // />,
       getFlow(payment.flow),
       formatPaymentType(payment.payment_type),
       <Action payment={payment} />,
@@ -125,12 +120,9 @@ export const EditPaymentsGroup = () => {
   };
 
   const formatAddedPayments = (payments: TPayment[]): any[][] => {
+    console.log('FORMAT');
     const formatedPayments = payments.map((payment: TPayment) => [
       payment.title,
-      // <CategoryCell
-      //   icon={payment.category_icon}
-      //   name={payment.category_name}
-      // />,
       getFlow(payment.flow),
       formatPaymentType(payment.payment_type),
       <StyledAction>

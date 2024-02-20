@@ -31,7 +31,7 @@ import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
-import { IoToday } from "react-icons/io5";
+import { IoToday, IoEyeSharp } from "react-icons/io5";
 import {
   MdDelete,
   MdEdit,
@@ -82,6 +82,7 @@ export const icons = {
   group: FaRegObjectGroup,
   throwLeft: FaArrowAltCircleLeft,
   throwRight: FaArrowAltCircleRight,
+  eye: IoEyeSharp,
 };
 
 export const Icon = ({
