@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { transition } from "../../assets/theme/animations";
 
 export const StyledIconButton = styled.button<{
   size: number;
@@ -19,4 +20,6 @@ export const StyledIconButton = styled.button<{
     background: ${theme.colors.lightGrey};
   }
   `}
+
+  ${transition}
 `;

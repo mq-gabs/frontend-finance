@@ -4,14 +4,14 @@ import { call } from "../utils";
 
 type TGetPaymentsOfGroup = {
   id: string;
-  title: string;
+  title?: string;
   page: number;
   pageSize: number;
-  startPayAt: string;
-  endPayAt: string;
-  status: EStatus;
-  flow: EFlow;
-  paymentType: EPaymentType;
+  startPayAt?: string;
+  endPayAt?: string;
+  status?: EStatus;
+  flow?: EFlow;
+  paymentType?: EPaymentType;
 };
 
 export const getPaymentsOfGroup = async ({

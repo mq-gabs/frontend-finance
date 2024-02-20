@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Button,
-  Icon,
-  IconButton,
-  Input,
-  Table,
-} from "../../components";
+import { Button, Icon, IconButton, Input, Table } from "../../components";
 import {
   StyledAction,
   StyledEditPaymentsGroup,
@@ -59,10 +53,13 @@ export const EditPaymentsGroup = () => {
   };
 
   const isPaymentAdded = (payment: TPayment): boolean => {
+    console.log({ payment, paymentsOfPaymentsGroup });
     return paymentsOfPaymentsGroup.some(
       (_payment: TPayment) => _payment.id === payment.id
     );
   };
+
+  console.log({ paymentsOfPaymentsGroup });
 
   const Action = ({ payment }: { payment: TPayment }) => (
     <StyledAction>
@@ -75,7 +72,7 @@ export const EditPaymentsGroup = () => {
         <IconButton
           icon="throwRight"
           color="green"
-          size={0.8}
+          size={1}
           onClick={() => handleAddPaymentToGroupList(payment)}
         />
       )}
@@ -109,7 +106,7 @@ export const EditPaymentsGroup = () => {
       return;
     }
 
-    const response = await getPaymentsOfGroup({ id });
+    const response = await getPaymentsOfGroup({ id, page: 0, pageSize: 100 });
 
     if (!response) return;
 
@@ -120,7 +117,6 @@ export const EditPaymentsGroup = () => {
   };
 
   const formatAddedPayments = (payments: TPayment[]): any[][] => {
-    console.log('FORMAT');
     const formatedPayments = payments.map((payment: TPayment) => [
       payment.title,
       getFlow(payment.flow),
@@ -129,7 +125,7 @@ export const EditPaymentsGroup = () => {
         <IconButton
           icon="throwLeft"
           color="red"
-          size={0.8}
+          size={1}
           onClick={() => handleRemovePaymentOfGroupList(payment)}
         />
       </StyledAction>,
@@ -144,7 +140,7 @@ export const EditPaymentsGroup = () => {
 
   useEffect(() => {
     getPaymentsList();
-  }, [page, pageSize]);
+  }, [page, pageSize, paymentsOfPaymentsGroup]);
 
   const handleSaveGroup = async () => {
     if (!id) return;
