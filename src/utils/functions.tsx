@@ -85,9 +85,6 @@ export const getCountRestDays = (date: string) => {
 
   const diff = Math.ceil(rawDiff / 1000 / 60 / 60 / 24);
 
-  if (date === "2024-02-10") {
-    console.log({ targetDate, todaysDate, diff, rawDiff });
-  }
   if (diff > 0) {
     if (diff === 1) {
       return `Falta ${diff} dia`;

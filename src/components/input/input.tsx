@@ -10,7 +10,6 @@ interface IInput {
 }
 
 const formatCurrency = (input: number) => {
-  console.log({ input });
   if (!input) return "R$ 0,00";
   let val = input.toLocaleString("pt-br", { minimumIntegerDigits: 3 });
 

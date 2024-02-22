@@ -56,8 +56,6 @@ export const ViewPaymentsGroup = () => {
 
     const payments = response.payments;
 
-    console.log({ payments });
-
     const formattedPayments = payments.map((payment: TPayment) => [
       payment.title,
       formatDate(payment.pay_at),

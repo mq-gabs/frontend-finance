@@ -21,10 +21,7 @@ export const NewPayments = () => {
   );
   const [categories, setCategories] = useState<TCategory[]>([]);
 
-  console.log({ formData });
-
   const onChangeFormData = (value: any, field: string) => {
-    console.log({ value });
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 

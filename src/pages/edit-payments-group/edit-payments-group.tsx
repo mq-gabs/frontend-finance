@@ -53,13 +53,10 @@ export const EditPaymentsGroup = () => {
   };
 
   const isPaymentAdded = (payment: TPayment): boolean => {
-    console.log({ payment, paymentsOfPaymentsGroup });
     return paymentsOfPaymentsGroup.some(
       (_payment: TPayment) => _payment.id === payment.id
     );
   };
-
-  console.log({ paymentsOfPaymentsGroup });
 
   const Action = ({ payment }: { payment: TPayment }) => (
     <StyledAction>

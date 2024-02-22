@@ -5,8 +5,6 @@ const storaged = localStorage.getItem(localAuthTag);
 
 const userData = JSON.parse(storaged || "{}");
 
-console.log({ value: import.meta.env });
-
 export const api = axios.create({
   baseURL: "http://localhost:5000",
   headers: {

@@ -63,8 +63,6 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
     getPayments();
   }, [page, pageSize]);
 
-  console.log({ pays });
-
   return (
     <StyledList>
       <h1>
