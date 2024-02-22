@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import {
   Categories,
+  EditPayment,
+  EditPaymentsGroup,
   Home,
   NewPayments,
   Payments,
   PaymentsGroups,
+  ViewPaymentsGroup,
 } from "../pages";
 import { Menu } from "../components";
 import light from "../assets/theme/light";
-import { EditPaymentsGroup } from "../pages/edit-payments-group/edit-payments-group";
-import { ViewPaymentsGroup } from "../pages/view-payments-group/view-payments-group";
 
 export const AuthRouter = () => {
   return (
@@ -32,7 +33,7 @@ export const AuthRouter = () => {
           <Route path="/categorias" Component={Categories} />
           <Route path="/pagamentos" Component={Payments} />
           <Route path="/pagamentos/novo" Component={NewPayments} />
-          <Route path="/pagamentos/editar/:id" Component={() => <></>} />
+          <Route path="/pagamentos/editar/:id" Component={EditPayment} />
           <Route path="/grupos" Component={PaymentsGroups} />
           <Route path="/grupos/:id" Component={ViewPaymentsGroup} />
           <Route path="/grupos/editar/:id" Component={EditPaymentsGroup} />

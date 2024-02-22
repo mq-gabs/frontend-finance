@@ -4,3 +4,6 @@ export * from "./new-payments";
 export * from "./categories";
 export * from "./payments";
 export * from "./payments-groups";
+export * from "./edit-payment";
+export * from "./edit-payments-group";
+export * from "./view-payments-group";

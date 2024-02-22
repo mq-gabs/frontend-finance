@@ -173,7 +173,7 @@ export const EditPaymentsGroup = () => {
       </StyledTopOptions>
       <StyledEditPaymentsGroupContent>
         <StyledPaymentsList>
-          <h4>Lista de pagamentos</h4>
+          <h4>Lista de todos os pagamentos</h4>
           {allPaymentsList.length !== 0 && (
             <Table
               page={page}

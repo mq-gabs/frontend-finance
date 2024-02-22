@@ -15,8 +15,9 @@ export const formatDate = (date: string) => {
 };
 
 export const getFlow = (flow: EFlow) => {
-  if (flow === EFlow.OUT) return <Icon name="exit" color="red" />;
-  if (flow === EFlow.IN) return <Icon name="enter" color="green" />;
+  if (flow === EFlow.OUT) return <Icon name="give" color="red" size={1.2} />;
+  if (flow === EFlow.IN)
+    return <Icon name="receive" color="green" size={1.2} />;
 
   return "-";
 };
