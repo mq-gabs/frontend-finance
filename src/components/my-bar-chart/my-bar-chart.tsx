@@ -5,8 +5,6 @@ interface IMyBarChart {
 }
 
 export const MyBarChart = ({ title }: IMyBarChart) => {
-  const data = [];
-
   return (
     <StyledMyBarChart>
       <p>{title}</p>
