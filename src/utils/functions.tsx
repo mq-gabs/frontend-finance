@@ -3,15 +3,30 @@ import { Icon } from "../components";
 
 export const formatDate = (date: string) => {
   const dt = new Date(date);
-  const month = dt.getMonth() + 1;
+  let year = dt.getFullYear();
+  let month = dt.getMonth() + 1;
 
-  const day = dt.getDate() + 1;
+  let day = dt.getDate() + 1;
+
+  if (
+    (day > 31 && month !== 2) ||
+    (day > 28 && month === 2 && year % 4 !== 0) ||
+    (day > 29 && month === 2 && year % 4 === 0)
+  ) {
+    day = 1;
+    month += 1;
+  }
+
+  if (month > 12) {
+    month = 1;
+    year += 1;
+  }
 
   return `${day.toLocaleString("pt-br", {
     minimumIntegerDigits: 2,
   })}/${month.toLocaleString("pt-br", {
     minimumIntegerDigits: 2,
-  })}/${dt.getFullYear()}`;
+  })}/${year}`;
 };
 
 export const getFlow = (flow: EFlow) => {

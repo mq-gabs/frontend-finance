@@ -14,6 +14,7 @@ export const StyledInput = styled.div`
   &:hover {
     ${bright}
   }
+  position: relative;
 
   > input {
     border: none;
@@ -35,6 +36,14 @@ export const StyledInput = styled.div`
   &:has(input:focus) {
     border-color: ${({ theme }) => theme.colors.primary};
   }
+`;
+
+export const StyledInputDate = styled.input`
+  position: absolute;
+  width: 80%;
+  margin-left: 1rem;
+  height: 100%;
+  background: ${({ theme }) => theme.colors.light} !important;
 `;
 
 export const StyledInputWrapper = styled.div`

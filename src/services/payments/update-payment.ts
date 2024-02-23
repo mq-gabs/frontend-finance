@@ -8,7 +8,7 @@ type TUpdatePayment = {
   status?: EStatus;
   category_id?: string;
   value?: number;
-  pay_at: string;
+  pay_at?: string;
 };
 
 export const updatePayment = async ({

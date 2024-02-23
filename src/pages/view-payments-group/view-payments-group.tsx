@@ -5,7 +5,7 @@ import {
   PaymentsFilter,
   TFilterData,
 } from "../payments/payments-filter/payments-filter";
-import { CategoryCell, StatusCell, Table } from "../../components";
+import { Actions, CategoryCell, StatusCell, Table } from "../../components";
 import { useParams } from "react-router-dom";
 import { getPaymentsOfGroup } from "../../services";
 import {
@@ -72,7 +72,10 @@ export const ViewPaymentsGroup = () => {
         : "-",
       formatMyCurrency(payment.value),
       <StatusCell status={payment.status} />,
-      () => <></>,
+      <Actions
+          id={payment.id}
+          onReload={listGroupPayments}
+      />,
     ]);
 
     setPaymentGroupName(response.name);

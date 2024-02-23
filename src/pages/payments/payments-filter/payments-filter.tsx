@@ -11,7 +11,7 @@ export type TFilterData = {
   title: string;
   status: EStatus;
   paymentType: EPaymentType;
-  flow: EFlow; 
+  flow: EFlow;
   startPayAt: string;
   endPayAt: string;
 };
@@ -73,12 +73,14 @@ export const PaymentsFilter = ({ data, setData }: IPaymentsFilter) => {
           name="Data do pagamento a partir de"
           placeholder="Pagamento"
           type="date"
+          value={data.startPayAt}
           setValue={(value) => handleUpdateFilterData(value, "startPayAt")}
         />
         <Input
           name="Data do pagamento até"
           placeholder="Pagamento"
           type="date"
+          value={data.endPayAt}
           setValue={(value) => handleUpdateFilterData(value, "endPayAt")}
         />
       </StyledFiltersWrapper>
