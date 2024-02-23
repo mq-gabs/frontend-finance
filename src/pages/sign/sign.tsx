@@ -39,6 +39,8 @@ export const Sign = () => {
       password,
     });
 
+    if (!response) return;
+
     saveUserData(response);
     navigate(0);
   };

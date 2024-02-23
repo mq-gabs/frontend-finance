@@ -30,7 +30,15 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const [userData, setUserData] = useState<TUser>(defaultData);
 
-  const saveUserData = ({ id, name, email, profile, token }: TUser) => {
+  const saveUserData = (userDataToBeSaved: TUser) => {
+    if (!userDataToBeSaved) {
+      setUserData({} as TUser);
+      localStorage.setItem(localAuthTag, "{}");
+      return;
+    }
+
+    const { id, name, email, profile, token } = userDataToBeSaved;
+
     setUserData({
       id,
       name,

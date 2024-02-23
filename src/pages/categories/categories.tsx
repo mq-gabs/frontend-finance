@@ -9,6 +9,7 @@ import {
 import { StyledCategories, StyledCategoryCard } from "./categories.styles";
 import { TCategory, TIcon } from "../../utils";
 import { CategorySelect } from "../../components/category-select/category-select";
+import toast from "react-hot-toast";
 
 export const Categories = () => {
   const [categories, setCategories] = useState<TCategory[]>([]);
@@ -32,7 +33,8 @@ export const Categories = () => {
     e.preventDefault();
 
     if (!name || !icon) {
-      alert("Preencha todos os campos!");
+      toast.error("Preencha todos os campos!");
+      return;
     }
 
     const response = await saveCategory({ name, icon });

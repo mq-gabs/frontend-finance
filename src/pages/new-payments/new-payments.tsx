@@ -4,6 +4,7 @@ import { EFlow, EPaymentType, TCategory } from "../../utils";
 import { StyledNewPayments } from "./new-payments.styles";
 import { createPayment, getAllCategories } from "../../services";
 import { formatTotal } from "./utils";
+import toast from "react-hot-toast";
 
 type TNewPaymentForm = {
   title: string;
@@ -50,7 +51,7 @@ export const NewPayments = () => {
 
     if (!category_id || !flow || !payment_type || !pay_at || !title || !total) {
       e.preventDefault();
-      alert("Preencha todos os campos!");
+      toast.error("Preencha todos os campos!");
       return;
     }
 
@@ -64,7 +65,7 @@ export const NewPayments = () => {
       installment_total,
     });
 
-    if (!response) alert("Deu erro");
+    if (!response) toast.error("Ocorreu um erro!");
 
     setFormData({} as TNewPaymentForm);
   };
