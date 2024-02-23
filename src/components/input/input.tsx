@@ -46,12 +46,8 @@ export const Input = ({
 
   const date = formatDate(value);
 
-  console.log({ value });
-
   const handleChange = ({ target }: any) => {
     let unformated = target.value;
-
-    console.log({ unformated });
 
     if (isCurrency) unformated = Number(target.value.replace(/\D/g, ""));
 

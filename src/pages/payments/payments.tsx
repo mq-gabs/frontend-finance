@@ -19,8 +19,6 @@ export const Payments = () => {
 
   const [filterData, setFilterData] = useState<TFilterData>({} as TFilterData);
 
-  console.log({ filterData });
-
   const getPayments = async () => {
     const response = await getAllPayments({
       page,
