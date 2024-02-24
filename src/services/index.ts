@@ -6,7 +6,7 @@ const storaged = localStorage.getItem(localAuthTag);
 const userData = JSON.parse(storaged || "{}");
 
 export const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     Authorization: `Bearer ${userData?.token}` || "",
   },
