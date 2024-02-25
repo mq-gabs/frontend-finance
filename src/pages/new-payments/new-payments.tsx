@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Input, Loading, Select } from "../../components";
+import { Button, Input, Select } from "../../components";
 import { EFlow, EPaymentType, TCategory } from "../../utils";
 import { StyledNewPayments } from "./new-payments.styles";
 import { createPayment, getAllCategories } from "../../services";
@@ -26,8 +26,6 @@ export const NewPayments = () => {
   const onChangeFormData = (value: any, field: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
-
-  console.log({ formData });
 
   const getCategories = async () => {
     const response = await getAllCategories({ pageSize: 100 });

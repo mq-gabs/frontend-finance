@@ -16,3 +16,4 @@ export * from "./auth";
 export * from "./payments";
 export * from "./categories";
 export * from "./payments-groups";
+export * from "./users";

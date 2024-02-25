@@ -13,6 +13,8 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
   outline: none;
   height: 3rem;
   align-items: center;
+  justify-content: center;
+
   ${transition}
 
   ${({ styledtype: styledType, theme }) => {

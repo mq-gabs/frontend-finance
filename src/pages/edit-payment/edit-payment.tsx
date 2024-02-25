@@ -25,8 +25,6 @@ export const EditPayment = () => {
   const [categoriesList, setCategoriesList] = useState<TCategory[]>([]);
   const navigate = useNavigate();
 
-  console.log({ paymentInfo });
-
   const getPaymentInfo = async () => {
     if (!id) return;
 

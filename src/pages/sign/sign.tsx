@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { StyledSign } from "./sign.styles";
 import { Input, Button, LogoAndName } from "../../components";
-import { signIn } from "../../services";
+import { createUserDefault, signIn } from "../../services";
 import { useAuth } from "../../hooks";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const Sign = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -12,6 +13,8 @@ export const Sign = () => {
   const [password, setPassword] = useState<string>("");
   const [samePassword, setSamePassword] = useState<string>("");
   const { saveUserData } = useAuth();
+  const [isLoadingCreateUser, setIsLoadingCreateUser] =
+    useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -45,8 +48,36 @@ export const Sign = () => {
     navigate(0);
   };
 
-  const createAccount = (e: any) => {
+  const createAccount = async (e: any) => {
     e.preventDefault();
+
+    if (!name || !email || !password || !samePassword) {
+      toast.error("Preencha todos os campos!");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("A senha precisa ter pelo menos 6 caracteres!");
+      return;
+    }
+
+    if (password !== samePassword) {
+      toast.error("As senhas são diferentes!");
+      return;
+    }
+
+    setIsLoadingCreateUser(true);
+    const response = await createUserDefault({
+      name,
+      password,
+      email,
+    });
+    setIsLoadingCreateUser(false);
+
+    if (response) {
+      toast.success("Faça seu login para continuar.");
+      goToLogIn(e);
+    }
   };
 
   return (
@@ -83,7 +114,11 @@ export const Sign = () => {
             placeholder="Repetir senha"
             setValue={setSamePassword}
           />
-          <Button onClick={createAccount} text="Criar conta" />
+          <Button
+            onClick={createAccount}
+            text="Criar conta"
+            isLoading={isLoadingCreateUser}
+          />
           <Button
             type="secondary"
             onClick={goToLogIn}

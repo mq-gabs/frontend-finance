@@ -17,8 +17,6 @@ export const Button = ({ type, text, onClick, isLoading = false }: IButton) => {
     return "primary";
   };
 
-  console.log({ isLoading });
-
   return (
     <StyledButton
       onClick={isLoading ? () => {} : onClick}
