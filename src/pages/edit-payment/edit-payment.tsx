@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Input, Select } from "../../components";
+import { Button, Input, Loading, Select } from "../../components";
 import { StyledEditPayment, StyledForm } from "./edit-payment.styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPaymentById } from "../../services/payments/get-payment-by-id";
@@ -9,7 +9,7 @@ import { getAllCategories, updatePayment } from "../../services";
 type TPaymentEditingInfo = {
   title: string;
   status: EStatus;
-  payAt: string;
+  pay_at: string;
   category_id: string;
   value: number;
 };
@@ -19,14 +19,20 @@ export const EditPayment = () => {
   const [paymentInfo, setPaymentInfo] = useState<TPaymentEditingInfo>(
     {} as TPaymentEditingInfo
   );
+  const [isLoadingPaymentInfo, setIsLoadingPaymentInfoi] =
+    useState<boolean>(false);
   const [previousTitle, setPreviousTitle] = useState<string>("");
   const [categoriesList, setCategoriesList] = useState<TCategory[]>([]);
   const navigate = useNavigate();
 
+  console.log({ paymentInfo });
+
   const getPaymentInfo = async () => {
     if (!id) return;
 
+    setIsLoadingPaymentInfoi(true);
     const response = await getPaymentById({ id });
+    setIsLoadingPaymentInfoi(false);
 
     if (!response) return;
 
@@ -71,7 +77,7 @@ export const EditPayment = () => {
       id,
       title: paymentInfo.title,
       category_id: paymentInfo.category_id,
-      pay_at: paymentInfo.payAt,
+      pay_at: paymentInfo.pay_at,
       status: paymentInfo.status,
       value: paymentInfo.value / 100,
     });
@@ -83,52 +89,56 @@ export const EditPayment = () => {
     <StyledEditPayment>
       <h2>Editar pagamento{previousTitle && ` - ${previousTitle}`}</h2>
 
-      <StyledForm>
-        <Input
-          name="Título"
-          placeholder="Título"
-          setValue={(value) => handleUpdatePaymentInfo(value, "title")}
-          value={paymentInfo.title}
-          type="text"
-        />
-        <Input
-          name="Valor"
-          placeholder="Valor"
-          setValue={(value) => handleUpdatePaymentInfo(value, "value")}
-          value={paymentInfo.value}
-          type="text"
-          isCurrency
-        />
-        <Select
-          name="Status"
-          items={[
-            { id: 0, name: "Pendente", value: "PENDING" },
-            { id: 1, name: "Pago", value: "PAID" },
-            { id: 2, name: "Atrasado", value: "LATE" },
-            { id: 3, name: "Pague hoje", value: "PAYDAY" },
-          ]}
-          selected={paymentInfo.status}
-          onChange={(value) => handleUpdatePaymentInfo(value, "status")}
-        />
-        <Select
-          name="Categoria"
-          items={categoriesList.map(({ id, name }) => ({
-            id,
-            value: id,
-            name,
-          }))}
-          onChange={(value) => handleUpdatePaymentInfo(value, "categoryId")}
-          selected={paymentInfo.category_id}
-        />
-        <Input
-          name="Data de pagamento"
-          placeholder="Data de pagamento"
-          type="date"
-          setValue={(value) => handleUpdatePaymentInfo(value, "payAt")}
-          value={paymentInfo.value}
-        />
-        <Button onClick={handleUpdatePayment} text="Salvar" />
-      </StyledForm>
+      {isLoadingPaymentInfo ? (
+        <Loading color="primary" />
+      ) : (
+        <StyledForm>
+          <Input
+            name="Título"
+            placeholder="Título"
+            setValue={(value) => handleUpdatePaymentInfo(value, "title")}
+            value={paymentInfo.title}
+            type="text"
+          />
+          <Input
+            name="Valor"
+            placeholder="Valor"
+            setValue={(value) => handleUpdatePaymentInfo(value, "value")}
+            value={paymentInfo.value}
+            type="text"
+            isCurrency
+          />
+          <Select
+            name="Status"
+            items={[
+              { id: 0, name: "Pendente", value: "PENDING" },
+              { id: 1, name: "Pago", value: "PAID" },
+              { id: 2, name: "Atrasado", value: "LATE" },
+              { id: 3, name: "Pague hoje", value: "PAYDAY" },
+            ]}
+            selected={paymentInfo.status}
+            onChange={(value) => handleUpdatePaymentInfo(value, "status")}
+          />
+          <Select
+            name="Categoria"
+            items={categoriesList.map(({ id, name }) => ({
+              id,
+              value: id,
+              name,
+            }))}
+            onChange={(value) => handleUpdatePaymentInfo(value, "categoryId")}
+            selected={paymentInfo.category_id}
+          />
+          <Input
+            name="Data de pagamento"
+            placeholder="Data de pagamento"
+            type="date"
+            setValue={(value) => handleUpdatePaymentInfo(value, "pay_at")}
+            value={paymentInfo.pay_at}
+          />
+          <Button onClick={handleUpdatePayment} text="Salvar" />
+        </StyledForm>
+      )}
     </StyledEditPayment>
   );
 };

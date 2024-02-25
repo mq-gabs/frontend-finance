@@ -1,4 +1,4 @@
-import { Icon } from "../../../components";
+import { Icon, Loading } from "../../../components";
 import {
   StyledCategoriesCharts,
   StyledNoContent,
@@ -22,16 +22,20 @@ export const CategoriesChart = ({
 }: ICategoriesChart) => {
   const [categoriesNames, setCategoriesNames] = useState<string[]>([]);
   const [categoriesSpents, setCategoriesSpents] = useState<number[]>([]);
+  const [isLoadingTopCategories, setIsLoadingTopCategories] =
+    useState<boolean>(false);
 
   const chartOptions = getChartOptions(categoriesNames, categoriesSpents);
 
   const getTop5Categories = async () => {
+    setIsLoadingTopCategories(true);
     const categories = await getTopCategories({
       startDate: new Date(currentYear, currentMonth, 1).toJSON().slice(0, 10),
       endDate: new Date(currentYear, currentMonth + 1, 0).toJSON().slice(0, 10),
       flow: EFlow.OUT,
       status: EStatus.PAID,
     });
+    setIsLoadingTopCategories(false);
 
     if (!categories) return;
 
@@ -52,13 +56,21 @@ export const CategoriesChart = ({
       <h2>
         <Icon name="categories" color="primary" /> Top 5 categorias
       </h2>
-      {categoriesNames.length !== 0 && (
-        <Chart options={chartOptions} series={chartOptions.series} />
-      )}
-      {categoriesNames.length === 0 && (
-        <StyledNoContent>
-          <p>Nenhuma categoria foi utilizada no mês de {currentMonthName}</p>
-        </StyledNoContent>
+      {isLoadingTopCategories ? (
+        <Loading color="primary" />
+      ) : (
+        <>
+          {categoriesNames.length !== 0 && (
+            <Chart options={chartOptions} series={chartOptions.series} />
+          )}
+          {categoriesNames.length === 0 && (
+            <StyledNoContent>
+              <p>
+                Nenhuma categoria foi utilizada no mês de {currentMonthName}
+              </p>
+            </StyledNoContent>
+          )}
+        </>
       )}
     </StyledCategoriesCharts>
   );

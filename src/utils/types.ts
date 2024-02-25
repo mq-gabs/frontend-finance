@@ -90,7 +90,9 @@ export type TIcon =
   | "group"
   | "throwLeft"
   | "throwRight"
-  | "eye";
+  | "eye"
+  | "loading"
+  | "pig";
 
 export type TColors =
   | "primary"

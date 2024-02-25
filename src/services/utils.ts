@@ -5,6 +5,10 @@ export const call = async (func: Function) => {
   try {
     const { data } = await func();
 
+    if (data?.message) {
+      toast.success(data.message);
+    }
+
     return data;
   } catch ({ response }: any) {
     toast.dismiss();

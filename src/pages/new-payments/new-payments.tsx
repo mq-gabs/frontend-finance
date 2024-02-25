@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Input, Select } from "../../components";
+import { Button, Input, Loading, Select } from "../../components";
 import { EFlow, EPaymentType, TCategory } from "../../utils";
 import { StyledNewPayments } from "./new-payments.styles";
 import { createPayment, getAllCategories } from "../../services";
@@ -20,11 +20,14 @@ export const NewPayments = () => {
   const [formData, setFormData] = useState<TNewPaymentForm>(
     {} as TNewPaymentForm
   );
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState<boolean>(false);
   const [categories, setCategories] = useState<TCategory[]>([]);
 
   const onChangeFormData = (value: any, field: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
+
+  console.log({ formData });
 
   const getCategories = async () => {
     const response = await getAllCategories({ pageSize: 100 });
@@ -39,6 +42,7 @@ export const NewPayments = () => {
   }, []);
 
   const submitPayment = async (e: any) => {
+    e.preventDefault();
     const {
       category_id,
       flow,
@@ -50,10 +54,11 @@ export const NewPayments = () => {
     } = formData;
 
     if (!category_id || !flow || !payment_type || !pay_at || !title || !total) {
-      e.preventDefault();
       toast.error("Preencha todos os campos!");
       return;
     }
+
+    setIsLoadingSubmit(true);
 
     const response = await createPayment({
       title,
@@ -64,6 +69,8 @@ export const NewPayments = () => {
       payment_type,
       installment_total,
     });
+
+    setIsLoadingSubmit(false);
 
     if (!response) toast.error("Ocorreu um erro!");
 
@@ -132,7 +139,11 @@ export const NewPayments = () => {
           value={formData.pay_at}
           setValue={(value) => onChangeFormData(value, "pay_at")}
         />
-        <Button text="Criar" onClick={submitPayment} />
+        <Button
+          text="Criar"
+          onClick={submitPayment}
+          isLoading={isLoadingSubmit}
+        />
       </form>
     </StyledNewPayments>
   );

@@ -1,6 +1,7 @@
 import { TColors, TIcon } from "../../utils";
 import { StyledIcon } from "./icon.styles";
 
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { CgGym } from "react-icons/cg";
 import {
@@ -32,6 +33,7 @@ import {
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
 import { IoToday, IoEyeSharp } from "react-icons/io5";
+import { LuPiggyBank } from "react-icons/lu";
 import {
   MdDelete,
   MdEdit,
@@ -83,6 +85,8 @@ export const icons = {
   throwLeft: FaArrowAltCircleLeft,
   throwRight: FaArrowAltCircleRight,
   eye: IoEyeSharp,
+  loading: AiOutlineLoading3Quarters,
+  pig: LuPiggyBank,
 };
 
 export const Icon = ({

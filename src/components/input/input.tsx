@@ -42,8 +42,6 @@ export const Input = ({
   name,
   isCurrency = false,
 }: IInput) => {
-  // const [date, setDate] = useState(formatDate(value));
-
   const date = formatDate(value);
 
   const handleChange = ({ target }: any) => {

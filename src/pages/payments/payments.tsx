@@ -16,15 +16,18 @@ export const Payments = () => {
   const [pageSize, setPageSize] = useState<number>(10);
   const [pays, setPays] = useState<any[][]>([]);
   const [paysCount, setPaysCount] = useState<number>(0);
+  const [isLoadingPayments, setIsLoadingPayments] = useState(false);
 
   const [filterData, setFilterData] = useState<TFilterData>({} as TFilterData);
 
   const getPayments = async () => {
+    setIsLoadingPayments(true);
     const response = await getAllPayments({
       page,
       pageSize,
       ...filterData,
     });
+    setIsLoadingPayments(false);
 
     if (!response) return;
 
@@ -87,6 +90,7 @@ export const Payments = () => {
             total={paysCount}
             setPage={setPage}
             setPageSize={setPageSize}
+            isLoading={isLoadingPayments}
           />
         )}
         {pays.length === 0 && (

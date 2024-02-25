@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { StyledPagination, StyledTable } from "./table.styles";
-import { IconButton } from "..";
+import { IconButton, Loading } from "..";
 
 interface ITable {
   columnsNames: string[];
@@ -11,6 +11,7 @@ interface ITable {
   setPageSize?: Dispatch<SetStateAction<number>>;
   setPage?: Dispatch<SetStateAction<number>>;
   hidePagination?: boolean;
+  isLoading?: boolean;
 }
 
 const genIndex = () => {
@@ -29,12 +30,13 @@ export const Table = ({
   setPageSize = () => {},
   total = 0,
   hidePagination = false,
+  isLoading = false,
 }: ITable) => {
   const [dataToRender, setDataToRender] = useState<any[][]>([[]]);
 
   useEffect(() => {
     setDataToRender(data);
-  }, [data])
+  }, [data]);
 
   const onNextPage = () => {
     if (pageSize * (page + 1) >= total) return;
@@ -46,7 +48,9 @@ export const Table = ({
     setPage((prev) => prev - 1);
   };
 
-  return (
+  return isLoading ? (
+    <Loading color="primary" />
+  ) : (
     <>
       <StyledTable size={columnsNames.length}>
         <tr>

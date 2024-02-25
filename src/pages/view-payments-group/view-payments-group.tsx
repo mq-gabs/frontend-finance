@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyledViewPaymentsGroup } from "./view-payments-group.styles";
-import { EPaymentType, TPayment } from "../../utils";
+import { EPaymentType, EStatus, TPayment } from "../../utils";
 import {
   PaymentsFilter,
   TFilterData,
@@ -73,8 +73,9 @@ export const ViewPaymentsGroup = () => {
       formatMyCurrency(payment.value),
       <StatusCell status={payment.status} />,
       <Actions
-          id={payment.id}
-          onReload={listGroupPayments}
+        id={payment.id}
+        onReload={listGroupPayments}
+        needToPay={payment.status !== EStatus.PAID}
       />,
     ]);
 

@@ -8,12 +8,12 @@ export const StyledHome = styled.main<{ balance_negative: boolean }>`
 
   display: grid;
   grid-template-areas:
-  "top top top top-categories top-categories"
-  "payments-late payments-late payments-late top-categories top-categories"
-  "payments-late payments-late payments-late top-categories top-categories"
-  "payments-month payments-month payments-month next-month next-month"
-  "payments-month payments-month payments-month next-month next-month";
-  "payments-month payments-month payments-month next-month next-month";
+    "top top top top-categories top-categories"
+    "payments-late payments-late payments-late top-categories top-categories"
+    "payments-late payments-late payments-late top-categories top-categories"
+    "payments-month payments-month payments-month next-month next-month"
+    "payments-month payments-month payments-month next-month next-month"
+    "payments-month payments-month payments-month next-month next-month";
   grid-template-rows: 80px auto auto auto auto;
   grid-template-columns: repeat(1fr, 6);
   gap: 1rem;
@@ -26,7 +26,8 @@ export const StyledHome = styled.main<{ balance_negative: boolean }>`
     ${showUp}
   }
 
-  .top h1, .top span {
+  .top h1,
+  .top span {
     font-weight: 600;
     font-size: 1.2rem;
   }

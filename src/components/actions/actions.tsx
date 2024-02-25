@@ -42,7 +42,7 @@ export const Actions = ({ needToPay = true, id, onReload }: IActions) => {
     await deletePayment({ id });
 
     setOpenDeleteDialog(false);
-    navigate(0);
+    onReload();
   };
 
   return (

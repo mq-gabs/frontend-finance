@@ -6,6 +6,7 @@ import { CategoriesChart } from "./categories-chart/categories-chart";
 import { NextMonthPayments } from "./next-month-payments/next-month-payments";
 import { getPaymentsBalance } from "../../services";
 import { useEffect, useState } from "react";
+import { Loading } from "../../components";
 
 const monthsNames = [
   "Janeiro",
@@ -35,8 +36,10 @@ export const Home = () => {
   const currentMontName = getMonthName(currentMonthIndex);
   const currentYear = new Date().getFullYear();
   const [balance, setBalance] = useState<number>(0);
+  const [isLoadingBalance, setIsLoadingBalance] = useState<boolean>(false);
 
   const getBalance = async () => {
+    setIsLoadingBalance(true);
     const response = await getPaymentsBalance({
       dateRef: `${currentYear}/${(currentMonthIndex + 1).toLocaleString(
         "pt-br",
@@ -45,6 +48,8 @@ export const Home = () => {
         }
       )}/01`,
     });
+
+    setIsLoadingBalance(false);
 
     if (!response) return;
 
@@ -62,7 +67,13 @@ export const Home = () => {
           {currentMontName} de {currentYear}
         </h1>
         <h1>
-          Saldo: <span>{formatMyCurrency(balance)}</span>
+          {isLoadingBalance ? (
+            <Loading color="primary" />
+          ) : (
+            <>
+              Saldo: <span>{formatMyCurrency(balance)}</span>
+            </>
+          )}
         </h1>
       </section>
       <section className="payments-late">

@@ -21,8 +21,11 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(5);
   const [pays, setPays] = useState<any[][]>([]);
+  const [isLoadingMonthPayments, setIsLoadingMonthPayments] =
+    useState<boolean>(false);
 
   const getPayments = async () => {
+    setIsLoadingMonthPayments(true);
     const payments = await getAllPayments({
       page,
       pageSize,
@@ -30,6 +33,7 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
       endPayAt: new Date(year, month + 1, 0).toJSON().slice(0, 10),
       status: EStatus.PENDING,
     });
+    setIsLoadingMonthPayments(false);
 
     const [pays, total] = payments;
 
@@ -82,6 +86,7 @@ export const ListMonthPayments = ({ month, year }: IListMonthPayments) => {
           pageSize={pageSize}
           setPageSize={setPageSize}
           hidePagination
+          isLoading={isLoadingMonthPayments}
         />
       )}
       {pays.length === 0 && (

@@ -18,13 +18,17 @@ export const ListLatePayments = () => {
   const [pageSize, setPageSize] = useState<number>(5);
   const [latePays, setLatePays] = useState<any[][]>([]);
   const [paysCount, setPaysCount] = useState<number>(0);
+  const [isLoadingLatePayments, setIsLoadingLatePayments] =
+    useState<boolean>(false);
 
   const getLatePayments = async () => {
+    setIsLoadingLatePayments(true);
     const response = await getAllPayments({
       page,
       pageSize,
       status: EStatus.LATE,
     });
+    setIsLoadingLatePayments(false);
 
     if (!response) return;
 
@@ -79,6 +83,7 @@ export const ListLatePayments = () => {
           data={latePays}
           total={paysCount}
           hidePagination
+          isLoading={isLoadingLatePayments}
         />
       )}
       {latePays.length === 0 && (

@@ -23,8 +23,11 @@ export const NextMonthPayments = ({
   const pageSize = 5;
   const [pays, setPays] = useState<any[][]>([]);
   const [paysCount, setPaysCount] = useState<number>(0);
+  const [isLoadingNextPayments, setIsLoadingNextPayments] =
+    useState<boolean>(false);
 
   const getNextMonthPayments = async () => {
+    setIsLoadingNextPayments(true);
     const response = await getAllPayments({
       page,
       pageSize,
@@ -32,6 +35,7 @@ export const NextMonthPayments = ({
       startPayAt: new Date(currentYear, nextMonth, 1).toJSON().slice(0, 10),
       endPayAt: new Date(currentYear, nextMonth + 1, 0).toJSON().slice(0, 10),
     });
+    setIsLoadingNextPayments(false);
 
     if (!response) return;
 
@@ -71,6 +75,7 @@ export const NextMonthPayments = ({
           pageSize={pageSize}
           total={paysCount}
           hidePagination
+          isLoading={isLoadingNextPayments}
         />
       )}
       {pays.length === 0 && (
