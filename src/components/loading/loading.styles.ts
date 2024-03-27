@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLoading = styled.div`
+export const StyledLoadingWrapper = styled.div`
   padding: 0.5rem;
   width: fit-content;
   height: fit-content;
@@ -18,4 +18,10 @@ export const StyledLoading = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+export const StyledLoading = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;

@@ -1,11 +1,14 @@
+import { useEffect, useState } from "react";
 import { Input, Select } from "../../../components";
-import { EFlow, EPaymentType, EStatus } from "../../../utils";
+import { EFlow, EPaymentType, EStatus, TCategory } from "../../../utils";
 import {
   StyledFiltersWrapper,
   StyledPaymentsFilter,
 } from "./payments-filter.styles";
 
 import { debounce } from "lodash";
+import { getAllCategories } from "../../../services";
+import toast from "react-hot-toast";
 
 export type TFilterData = {
   title: string;
@@ -14,6 +17,7 @@ export type TFilterData = {
   flow: EFlow;
   startPayAt: string;
   endPayAt: string;
+  categoryId: string;
 };
 
 interface IPaymentsFilter {
@@ -22,12 +26,32 @@ interface IPaymentsFilter {
 }
 
 export const PaymentsFilter = ({ data, setData }: IPaymentsFilter) => {
+  const [categories, setCategories] = useState<TCategory[]>([]);
+
   const handleUpdateFilterData = debounce((value: string, key: string) => {
     setData((prev: TFilterData) => ({
       ...prev,
       [key]: value,
     }));
   }, 300);
+
+  const getCategoriesForFilter = async () => {
+    const response = await getAllCategories({
+      page: 0,
+      pageSize: 100,
+    });
+
+    if (!response) {
+      toast.error('Erro ao buscar as categorias para o filtro!');
+      return;
+    }
+
+    setCategories(response[0]);    
+  }
+
+  useEffect(() => {
+    getCategoriesForFilter();
+  }, [])
 
   return (
     <StyledPaymentsFilter>
@@ -60,7 +84,7 @@ export const PaymentsFilter = ({ data, setData }: IPaymentsFilter) => {
           onChange={(value) => handleUpdateFilterData(value, "paymentType")}
           selected={data.paymentType}
         />
-        <Select
+        {/* <Select
           items={[
             { id: "1", name: "Entrada", value: EFlow.IN },
             { id: "2", name: "Saída", value: EFlow.OUT },
@@ -68,6 +92,16 @@ export const PaymentsFilter = ({ data, setData }: IPaymentsFilter) => {
           name="Fluxo"
           onChange={(value) => handleUpdateFilterData(value, "flow")}
           selected={data.flow}
+        /> */}
+        <Select
+          items={categories.map((category: TCategory) => ({
+            id: category.id,
+            name: category.name,
+            value: category.id,
+          }))}
+          name="Categoria"
+          onChange={(value) => handleUpdateFilterData(value, "categoryId")}
+          selected={data.categoryId}
         />
         <Input
           name="Data do pagamento a partir de"

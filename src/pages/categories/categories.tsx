@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Icon, IconButton, Input } from "../../components";
+import { Button, Icon, IconButton, Input, Loading } from "../../components";
 import {
   deleteCategory,
   editCategory,
@@ -18,9 +18,13 @@ export const Categories = () => {
   const [icon, setIcon] = useState<TIcon | "">("");
   const [isEditing, setIsEditing] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isCreatingOrEditing, setIsCreatingOrEditing] = useState<boolean>(false);
 
   const getCategories = async () => {
+    setIsLoading(true);
     const response = await getAllCategories({ pageSize: 100 });
+    setIsLoading(false);
 
     setCategories(response[0]);
   };
@@ -37,7 +41,11 @@ export const Categories = () => {
       return;
     }
 
+    setIsCreatingOrEditing(true);
+
     const response = await saveCategory({ name, icon });
+
+    setIsCreatingOrEditing(false);
 
     if (!response) return;
 
@@ -49,7 +57,11 @@ export const Categories = () => {
   const applyEditionToCategory = async (e: any) => {
     e.preventDefault();
 
+    setIsCreatingOrEditing(true);
+
     await editCategory({ id: selectedId, name, icon });
+
+    setIsCreatingOrEditing(false);
 
     handleClearInputs();
 
@@ -105,6 +117,7 @@ export const Categories = () => {
               onClick={
                 isEditing ? applyEditionToCategory : handleCreateCategory
               }
+              isLoading={isCreatingOrEditing}
             />
             <Button
               text={isEditing ? "Cancelar" : "Limpar"}
@@ -114,7 +127,8 @@ export const Categories = () => {
           </form>
         </section>
         <section className="categories-list">
-          <ul>
+          {!isLoading && (
+            <ul>
             {categories.length !== 0 &&
               categories.map((category) => (
                 <StyledCategoryCard key={category.id}>
@@ -127,15 +141,19 @@ export const Categories = () => {
                       onClick={() => handleClickToEditCategory(category.id)}
                       icon="edit"
                       size={1}
-                    />
+                      />
                     <IconButton
                       onClick={() => handleDeleteCategory(category.id)}
                       icon="delete"
-                    />
+                      />
                   </div>
                 </StyledCategoryCard>
               ))}
-          </ul>
+            </ul>
+          )}
+          {isLoading && (
+            <Loading color="primary" />
+          )}
         </section>
       </div>
     </StyledCategories>

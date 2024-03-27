@@ -93,7 +93,7 @@ export const Payments = () => {
             isLoading={isLoadingPayments}
           />
         )}
-        {pays.length === 0 && (
+        {pays.length === 0 && !isLoadingPayments && (
           <StyledNoContent>
             <p>Nenhum dado para exibir</p>
           </StyledNoContent>

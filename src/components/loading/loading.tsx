@@ -1,6 +1,6 @@
 import { Icon } from "..";
 import { TColors } from "../../utils";
-import { StyledLoading } from "./loading.styles";
+import { StyledLoading, StyledLoadingWrapper } from "./loading.styles";
 
 interface ILoading {
   color: TColors;
@@ -9,7 +9,9 @@ interface ILoading {
 export const Loading = ({ color }: ILoading) => {
   return (
     <StyledLoading>
-      <Icon name="loading" color={color} size={1} />
+      <StyledLoadingWrapper>
+        <Icon name="loading" color={color} size={1} />
+      </StyledLoadingWrapper>
     </StyledLoading>
   );
 };

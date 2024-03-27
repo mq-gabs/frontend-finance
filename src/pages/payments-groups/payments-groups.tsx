@@ -6,7 +6,7 @@ import {
   StyledPaymentsGroupsContent,
   StyledTableWrapper,
 } from "./payments-groups.styles";
-import { Button, Input, Table } from "../../components";
+import { Button, Input, Loading, Table } from "../../components";
 import { createPaymentsGroup, getPaymentsGroups } from "../../services";
 import { TPaymentsGroup } from "../../utils";
 import { PaymentsGroupsActions } from "../../components/payments-groups-actions/payments-groups-actions";
@@ -16,11 +16,17 @@ export const PaymentsGroups = () => {
   const [groupsCount, setGroupsCount] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isCreating, setIsCreating] = useState<boolean>(false);
 
   const [paymentsGroupName, setPaymentsGroupName] = useState<string>("");
 
   const getGroups = async () => {
+    setIsLoading(true);
+
     const response = await getPaymentsGroups({ page, pageSize });
+
+    setIsLoading(false);
 
     if (!response) return;
 
@@ -39,7 +45,11 @@ export const PaymentsGroups = () => {
   const handleAddPaymentsGroup = async (e: any) => {
     e.preventDefault();
 
+    setIsCreating(true);
+
     const response = await createPaymentsGroup({ name: paymentsGroupName });
+
+    setIsCreating(false);
 
     if (!response) return;
 
@@ -66,11 +76,11 @@ export const PaymentsGroups = () => {
               value={paymentsGroupName}
               type="text"
             />
-            <Button text="Adicionar" onClick={handleAddPaymentsGroup} />
+            <Button text="Adicionar" onClick={handleAddPaymentsGroup} isLoading={isCreating} />
           </form>
         </StyledFormWrapper>
         <StyledTableWrapper>
-          {paysGroups.length !== 0 && (
+          {paysGroups.length !== 0 && !(isLoading || isCreating) && (
             <Table
               page={page}
               pageSize={pageSize}
@@ -81,12 +91,15 @@ export const PaymentsGroups = () => {
               data={paysGroups}
             />
           )}
-          {paysGroups.length === 0 && (
+          {paysGroups.length === 0 && !(isLoading || isCreating) && (
             <StyledEmpty>
               <p>Nenhum grupo de pagamento encontrado</p>
             </StyledEmpty>
           )}
-        </StyledTableWrapper>
+          {(isLoading || isCreating) && (
+            <Loading color="primary" />
+          )}
+       </StyledTableWrapper>
       </StyledPaymentsGroupsContent>
     </StyledPaymentsGroups>
   );
