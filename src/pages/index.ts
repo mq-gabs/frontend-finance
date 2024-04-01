@@ -7,3 +7,4 @@ export * from "./payments-groups";
 export * from "./edit-payment";
 export * from "./edit-payments-group";
 export * from "./view-payments-group";
+export * from "./notes";

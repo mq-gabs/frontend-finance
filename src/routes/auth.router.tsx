@@ -5,6 +5,7 @@ import {
   EditPaymentsGroup,
   Home,
   NewPayments,
+  Notes,
   Payments,
   PaymentsGroups,
   ViewPaymentsGroup,
@@ -37,6 +38,7 @@ export const AuthRouter = () => {
           <Route path="/grupos" Component={PaymentsGroups} />
           <Route path="/grupos/:id" Component={ViewPaymentsGroup} />
           <Route path="/grupos/editar/:id" Component={EditPaymentsGroup} />
+          <Route path="/notes" Component={Notes} />
           <Route path="*" Component={Home} />
         </Routes>
       </div>
