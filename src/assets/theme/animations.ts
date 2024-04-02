@@ -17,5 +17,6 @@ animation-duration: 500ms;
 export const transition = `transition: 300ms;`;
 
 export const boxShadow = `box-shadow: 0px 0px 5px rgba(0,0,0,0.5);`;
+export const boxShadowHole = `box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);`;
 
 export const bright = `filter: brightness(1.1);`;

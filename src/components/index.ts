@@ -12,3 +12,4 @@ export * from "./actions";
 export * from "./confirmation-dialog";
 export * from "./logo-and-name";
 export * from "./loading";
+export * from "./textarea";
