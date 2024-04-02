@@ -8,7 +8,7 @@ import {
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../hooks";
-import { MdSpaceDashboard } from "react-icons/md";
+import { MdSpaceDashboard, MdOutlineStickyNote2 } from "react-icons/md";
 
 export const Menu = () => {
   const { logOut } = useAuth();
@@ -39,6 +39,11 @@ export const Menu = () => {
         <li>
           <Link to="/categorias">
             <BiSolidCategoryAlt /> Categorias
+          </Link>
+        </li>
+        <li>
+          <Link to="/notes">
+            <MdOutlineStickyNote2 /> Notas
           </Link>
         </li>
         <li>

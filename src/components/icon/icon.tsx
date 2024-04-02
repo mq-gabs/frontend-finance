@@ -44,6 +44,7 @@ import {
   MdWatchLater,
   MdCancel,
   MdQuestionMark,
+  MdOutlineStickyNote2,
 } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { TbPigMoney } from "react-icons/tb";
@@ -87,6 +88,7 @@ export const icons = {
   eye: IoEyeSharp,
   loading: AiOutlineLoading3Quarters,
   pig: LuPiggyBank,
+  note: MdOutlineStickyNote2,
 };
 
 export const Icon = ({

@@ -92,7 +92,8 @@ export type TIcon =
   | "throwRight"
   | "eye"
   | "loading"
-  | "pig";
+  | "pig"
+  | "note";
 
 export type TColors =
   | "primary"
