@@ -14,7 +14,7 @@ export const StyledTextarea = styled.div`
     outline: none;
     padding: 1rem 1rem;
     border-radius: 0.5rem;
-    border: 3px solid ${({ theme }) => theme.colors.grey};
+    border: 1px solid ${({ theme }) => theme.colors.grey};
     background: ${({ theme }) => theme.colors.light};
     resize: none;
 

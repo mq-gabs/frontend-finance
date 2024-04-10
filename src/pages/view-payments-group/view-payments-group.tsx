@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyledViewPaymentsGroup } from "./view-payments-group.styles";
+import { StyledPaymentsBalance, StyledViewPaymentsGroup } from "./view-payments-group.styles";
 import { EPaymentType, EStatus, TPayment } from "../../utils";
 import {
   PaymentsFilter,
@@ -24,6 +24,7 @@ export const ViewPaymentsGroup = () => {
   const [pageSize, setPageSize] = useState<number>(10);
   const [formattedPays, setFormattedPays] = useState<any[][]>([]);
   const [total, setTotal] = useState<number>(0);
+  const [paymentsBalance, setPaymentsBalance] = useState<number>(0);
 
   const columnsNames = [
     "Título",
@@ -55,6 +56,8 @@ export const ViewPaymentsGroup = () => {
     if (!response) return;
 
     const payments = response.payments;
+
+    setPaymentsBalance(response?.paymentsBalance);
 
     const formattedPayments = payments.map((payment: TPayment) => [
       payment.title,
@@ -93,6 +96,14 @@ export const ViewPaymentsGroup = () => {
       <h2>
         Grupo de pagamento
         {paymentsGroupName && ` - ${paymentsGroupName}`}
+        {paymentsBalance && (
+          <>
+          {' '}-
+          <StyledPaymentsBalance negative={paymentsBalance < 0}>
+            {formatMyCurrency(paymentsBalance)}
+          </StyledPaymentsBalance>
+          </>
+        )}
       </h2>
       <PaymentsFilter data={filterData} setData={setFilterData} />
       <Table

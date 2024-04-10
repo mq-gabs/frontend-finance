@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  StyledCurrency,
   StyledEmpty,
   StyledFormWrapper,
   StyledPaymentsGroups,
@@ -10,6 +11,7 @@ import { Button, Input, Loading, Table } from "../../components";
 import { createPaymentsGroup, getPaymentsGroups } from "../../services";
 import { TPaymentsGroup } from "../../utils";
 import { PaymentsGroupsActions } from "../../components/payments-groups-actions/payments-groups-actions";
+import { formatMyCurrency } from "../../utils/functions";
 
 export const PaymentsGroups = () => {
   const [paysGroups, setPaysGroups] = useState<any[][]>([]);
@@ -35,6 +37,9 @@ export const PaymentsGroups = () => {
     const formatedGroups = groups.map((group: TPaymentsGroup) => [
       group.name.toUpperCase(),
       group.payments_count,
+      <StyledCurrency negative={group.payments_balance < 0}>
+      {formatMyCurrency(group?.payments_balance)}
+      </StyledCurrency>,
       <PaymentsGroupsActions id={group.id} onReload={getGroups} />,
     ]);
 
@@ -61,7 +66,7 @@ export const PaymentsGroups = () => {
     getGroups();
   }, [page, pageSize]);
 
-  const columnsNames = ["Nome", "Nº de pagamentos", "Ações"];
+  const columnsNames = ["Nome", "Nº de pagamentos", "Saldo", "Ações"];
 
   return (
     <StyledPaymentsGroups>

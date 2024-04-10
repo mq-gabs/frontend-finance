@@ -56,3 +56,11 @@ export const StyledCategoryCard = styled.li`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const StyledEmpty = styled.div`
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

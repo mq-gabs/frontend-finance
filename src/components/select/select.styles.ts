@@ -4,7 +4,7 @@ import { bright } from "../../assets/theme/animations";
 export const StyledSelect = styled.select`
   border-radius: 0.5rem;
   height: 3rem;
-  border: 3px solid ${({ theme }) => theme.colors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.grey};
   background-color: ${({ theme }) => theme.colors.light};
   color: ${({ theme }) => theme.colors.dark};
   padding: 0 1rem;

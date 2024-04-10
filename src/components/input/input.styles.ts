@@ -7,7 +7,7 @@ export const StyledInput = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   gap: 1rem;
-  border: 3px solid ${({ theme }) => theme.colors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.grey};
   background: ${({ theme }) => theme.colors.light};
   height: 3rem;
   ${transition}

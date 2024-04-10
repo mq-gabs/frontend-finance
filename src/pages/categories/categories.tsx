@@ -6,7 +6,7 @@ import {
   getAllCategories,
   saveCategory,
 } from "../../services";
-import { StyledCategories, StyledCategoryCard } from "./categories.styles";
+import { StyledCategories, StyledCategoryCard, StyledEmpty } from "./categories.styles";
 import { TCategory, TIcon } from "../../utils";
 import { CategorySelect } from "../../components/category-select/category-select";
 import toast from "react-hot-toast";
@@ -127,7 +127,7 @@ export const Categories = () => {
           </form>
         </section>
         <section className="categories-list">
-          {!isLoading && (
+          {!isLoading && categories.length !== 0 && (
             <ul>
             {categories.length !== 0 &&
               categories.map((category) => (
@@ -153,6 +153,11 @@ export const Categories = () => {
           )}
           {isLoading && (
             <Loading color="primary" />
+          )}
+          {!isLoading && categories.length === 0 && (
+            <StyledEmpty>
+              <p>Nenhuma categoria para exibir.</p>
+            </StyledEmpty>
           )}
         </section>
       </div>

@@ -32,3 +32,13 @@ export const StyledEmpty = styled.div`
     text-align: center;
   }
 `;
+
+export const StyledCurrency = styled.p<{ negative: boolean }>`
+  ${({ negative, theme }) => negative ? `
+    color: ${theme.colors.red};
+  ` : `
+    color: ${theme.colors.green};
+  `}
+
+  font-weight: 600;
+`;

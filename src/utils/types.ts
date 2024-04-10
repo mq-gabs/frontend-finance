@@ -50,6 +50,7 @@ export type TPaymentsGroup = {
   id: string;
   name: string;
   payments_count?: number;
+  payments_balance: number;
   created_at: string;
   updated_at: string;
 };

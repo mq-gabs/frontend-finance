@@ -7,7 +7,7 @@ export const StyledCategorySelectWrapper = styled.div`
 `;
 
 export const StyledCategorySelect = styled.div`
-  border: 3px solid ${({ theme }) => theme.colors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.grey};
   border-radius: 0.5rem;
   padding: 1rem;
 
