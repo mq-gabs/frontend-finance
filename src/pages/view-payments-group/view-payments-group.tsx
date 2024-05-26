@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { StyledPaymentsBalance, StyledViewPaymentsGroup } from "./view-payments-group.styles";
+import {
+  StyledPaymentsBalance,
+  StyledViewPaymentsGroup,
+} from "./view-payments-group.styles";
 import { EPaymentType, EStatus, TPayment } from "../../utils";
 import {
   PaymentsFilter,
@@ -91,17 +94,20 @@ export const ViewPaymentsGroup = () => {
     listGroupPayments();
   }, [page, pageSize, filterData]);
 
+  console.log({ paymentsBalance, formated: formatMyCurrency(paymentsBalance) });
+
   return (
     <StyledViewPaymentsGroup>
       <h2>
         Grupo de pagamento
         {paymentsGroupName && ` - ${paymentsGroupName}`}
-        {paymentsBalance && (
+        {paymentsBalance !== null && paymentsBalance !== undefined && (
           <>
-          {' '}-
-          <StyledPaymentsBalance negative={paymentsBalance < 0}>
-            {formatMyCurrency(paymentsBalance)}
-          </StyledPaymentsBalance>
+            {" "}
+            -
+            <StyledPaymentsBalance negative={paymentsBalance < 0}>
+              {formatMyCurrency(paymentsBalance)}
+            </StyledPaymentsBalance>
           </>
         )}
       </h2>

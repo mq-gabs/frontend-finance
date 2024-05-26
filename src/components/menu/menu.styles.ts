@@ -33,6 +33,7 @@ export const StyledMenu = styled.aside`
     gap: 0.5rem;
     text-align: center;
     border-radius: 0.3rem;
+    font-weight: bold;
     color: ${({ theme }) => theme.colors.light};
   }
 

@@ -15,14 +15,17 @@ export const StyledViewPaymentsGroup = styled.main`
 `;
 
 export const StyledPaymentsBalance = styled.p<{ negative: boolean }>`
-  padding: 1rem;
-  border-radius: .5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   color: white;
   width: fit-content;
   font-size: 1.2rem;
-  ${({ negative, theme }) => negative ? `
+  ${({ negative, theme }) =>
+    negative
+      ? `
     background-color: ${theme.colors.red};
-  ` : `
+  `
+      : `
     background-color: ${theme.colors.green};
   `}
 

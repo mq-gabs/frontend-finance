@@ -43,6 +43,7 @@ export const formatMyCurrency = (value: number) => {
     value.toLocaleString("pt-br", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
+      minimumIntegerDigits: 2,
     })
   );
 };
