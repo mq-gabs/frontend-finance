@@ -82,7 +82,8 @@ export const StyledNote = styled.div`
 `;
 
 export const StyledActions = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 1rem;
+  justify-content: flex-end;
 `;
+

@@ -41,5 +41,17 @@ export const StyledButton = styled.button<{ styledtype: TButtonTypes }>`
         }
       `;
     }
+
+    if (styledType === "tertiary") {
+      return `
+        background: ${theme.colors.red};
+        color: ${theme.colors.light};
+        border: 3px solid ${theme.colors.red};
+
+        &:hover {
+          ${bright}
+        }
+      `
+    }
   }}
 `;

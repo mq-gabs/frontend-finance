@@ -12,6 +12,7 @@ import { findNotes } from "../../services/notes/find-notes";
 import { createNote } from "../../services/notes/create-note";
 import toast from "react-hot-toast";
 import { updateNote } from "../../services/notes/update-note";
+import { deleteNote } from "../../services/notes/delete-note";
 
 type TNote = {
   id: string;
@@ -85,6 +86,24 @@ export const Notes = () => {
     setIsEditing(false);
     loadNotes();
   };
+
+  const handleDeleteNote = async () => {
+    const response = await deleteNote({ id: currentNote.id });
+
+    if (!response) {
+      toast.error('Ocorreu algum erro ao excluir a nota!');
+      return;
+    } 
+
+    setCurrentNote({
+
+      id: "",
+      title: "",
+      body: "",
+    });
+    setIsEditing(false);
+    loadNotes();
+  }
 
   const loadNotes = async () => {
     setIsLoadingNotes(true);
@@ -174,6 +193,10 @@ export const Notes = () => {
           />
 
           <StyledActions>
+            {isEditing && (
+              <Button text="Deletar" type="tertiary" onClick={handleDeleteNote} />
+            )}
+
             <Button text="Cancelar" onClick={handleCancel} type="secondary" />
 
             <Button
