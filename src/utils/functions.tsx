@@ -92,9 +92,15 @@ export const getStatusInfo = (
 };
 
 export const getCountRestDays = (date: string) => {
-  const [year, month, day] = date.split("-");
+  const _date = new Date(date);
 
-  const targetDate = new Date(Number(year), Number(month) - 1, Number(day));
+  if (isNaN(_date.getTime())) return "-";
+
+  const targetDate = new Date(
+    _date.getFullYear(),
+    _date.getMonth(),
+    _date.getDate()
+  );
   const todaysDate = new Date();
 
   const rawDiff: number = targetDate.getTime() - todaysDate.getTime();
@@ -115,11 +121,9 @@ export const getCountRestDays = (date: string) => {
 
   if (diff < 0) {
     if (diff === -1) {
-      return `${-1 * diff} dia em atraso`;
+      return `'1 dia em atraso`;
     }
 
     return `${-1 * diff} dias em atraso`;
   }
-
-  return;
 };
