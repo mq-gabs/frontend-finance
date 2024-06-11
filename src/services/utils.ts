@@ -1,7 +1,8 @@
 import toast from "react-hot-toast";
 import { localAuthTag } from "../hooks";
+import { AxiosResponse } from "axios";
 
-export const call = async (func: Function) => {
+export const call = async (func: () => Promise<AxiosResponse>) => {
   try {
     const { data } = await func();
 
@@ -15,10 +16,11 @@ export const call = async (func: Function) => {
 
     toast.error(response?.data?.message || "Ocorreu um errro.");
 
-    console.log({ response });
+    console.error({ response });
 
     if (response?.status === 403) {
       localStorage.setItem(localAuthTag, "{}");
+      window.location.pathname = "/";
     }
 
     return;

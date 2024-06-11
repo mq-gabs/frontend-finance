@@ -94,8 +94,6 @@ export const ViewPaymentsGroup = () => {
     listGroupPayments();
   }, [page, pageSize, filterData]);
 
-  console.log({ paymentsBalance, formated: formatMyCurrency(paymentsBalance) });
-
   return (
     <StyledViewPaymentsGroup>
       <h2>
